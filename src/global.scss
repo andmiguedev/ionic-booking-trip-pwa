@@ -16,7 +16,7 @@
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
-@import '~@ionic/angular/css/display.css';
+@import "~@ionic/angular/css/display.css";
 
 /* Optional CSS utils that can be commented out */
 @import "~@ionic/angular/css/padding.css";
@@ -24,3 +24,73 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+/* Custom CSS libraries */
+@import "theme/third-party/animate.css";
+
+ion-item {
+  --ion-item-background: transparent;
+}
+
+// Backgrounds
+.bg-white {
+  background-color: white;
+}
+
+.bg-light {
+  background-color: var(--ion-color-light);
+}
+
+.bg-dark {
+  background-color: var(--ion-color-dark);
+}
+
+.bg-primary {
+  background-color: var(--ion-color-dark);
+}
+
+.bg-secondary {
+  background-color: var(--ion-color-secondary);
+}
+
+.bg-tertiary {
+  background-color: var(--ion-color-tertiary);
+}
+
+// Helpers
+.text-white {
+  color: white;
+}
+
+.text-primary {
+  color: var(--ion-color-primary);
+}
+
+.text-dark {
+  color: var(--ion-color-dark);
+}
+
+// Typography
+.text-30 {
+  font-size: 3rem !important;
+}
+
+.text-20 {
+  font-size: 2rem !important;
+}
+
+.text-15 {
+  font-size: 1.5rem !important;
+}
+
+.text-10 {
+  font-size: 1rem !important;
+}
+
+.text-8 {
+  font-size: 0.8rem !important;
+}
+
+.text-6 {
+  font-size: 0.65rem !important;
+}
