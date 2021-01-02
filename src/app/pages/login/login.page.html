@@ -1,0 +1,92 @@
+<ion-content class="ion-padding animated fadeIn login">
+  <video autoplay loop muted class="bg-video">
+    <source src="assets/videos/background.mp4" type="video/mp4" />
+    <source src="assets/videos/background.webm" type="video/webm" />
+  </video>
+
+  <div class="content">
+    <div class="ion-padding-horizontal ion-text-center animated fadeInRight">
+      <div class="logo"></div>
+      <h4 class="ion-no-margin">
+        <ion-text color="secondary" class="fw-700">Book Trip</ion-text>
+      </h4>
+    </div>
+
+    <!-- Page that Customers Logged in -->
+    <form class="form-list">
+      <ion-item class="ion-no-padding animated fadeInUp">
+        <ion-label position="floating">
+          <ion-icon name="mail" item-start color="primary"></ion-icon>
+          &nbsp;Email
+        </ion-label>
+        <ion-input color="secondary" type="email"></ion-input>
+      </ion-item>
+      <ion-item class="ion-no-padding animated fadeInUp">
+        <ion-label position="floating">
+          <ion-icon name="lock-closed" item-start color="primary"></ion-icon>
+          &nbsp;Password
+        </ion-label>
+        <ion-input color="secondary" type="password"></ion-input>
+      </ion-item>
+    </form>
+
+    <p class="ion-text-right text-link" tappable>
+      <ion-text color="primary">
+        <strong>Forgot your password?</strong>
+      </ion-text>
+    </p>
+
+    <div>
+      <ion-button
+        icon-left
+        size="medium"
+        expand="full"
+        shape="round"
+        color="dark"
+        tappable
+      >
+        <ion-icon name="log-in"></ion-icon>
+        &nbsp; Sign in
+      </ion-button>
+
+      <h6 class="ion-text-center text-media">
+        <ion-text color="primary">Or sign in with </ion-text>
+      </h6>
+
+      <ion-grid class="btn-group">
+        <ion-row>
+          <ion-col size="4">
+            <ion-button
+              shape="round"
+              expand="full"
+              fill="solid"
+              color="secondary"
+            >
+              <ion-icon slot="icon-only" name="logo-facebook"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col size="4">
+            <ion-button
+              shape="round"
+              expand="full"
+              fill="solid"
+              color="secondary"
+            >
+              <ion-icon slot="icon-only" name="logo-twitter"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col size="4">
+            <ion-button
+              shape="round"
+              expand="full"
+              fill="solid"
+              color="secondary"
+            >
+              <ion-icon slot="icon-only" name="logo-google"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+</ion-content>
