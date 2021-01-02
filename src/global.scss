@@ -57,6 +57,14 @@ ion-item {
   background-color: var(--ion-color-tertiary);
 }
 
+.bg-color {
+  background-image: linear-gradient(
+    135deg,
+    var(--ion-color-dark),
+    var(--ion-color-primary)
+  );
+}
+
 // Helpers
 .text-white {
   color: white;
@@ -93,4 +101,9 @@ ion-item {
 
 .text-6 {
   font-size: 0.65rem !important;
+}
+
+// Viewports
+.w-100 {
+  width: 100%;
 }
