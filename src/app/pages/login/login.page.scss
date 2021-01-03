@@ -1,9 +1,11 @@
-.login {
-  background-image: linear-gradient(
-    135deg,
-    var(--ion-color-dark),
-    var(--ion-color-primary)
-  );
+:host {
+  ion-content {
+    --background: linear-gradient(
+      135deg,
+      var(--ion-color-dark),
+      var(--ion-color-primary)
+    );
+  }
 
   .bg-video {
     position: fixed;
@@ -14,7 +16,7 @@
     width: auto;
     height: auto;
     z-index: 0;
-    opacity: 0.56;
+    opacity: 0.2;
     -webkit-transform: translateX(-50%) translateY(-50%);
     -moz-transform: translateX(-50%) translateY(-50%);
     -ms-transform: translateX(-50%) translateY(-50%);
@@ -25,54 +27,21 @@
       var(--ion-color-dark),
       var(--ion-color-primary)
     );
-    // background-size: cover;
-    // object-fit: cover;
+    background-size: cover;
+    object-fit: cover;
   }
 
-  .content {
-    margin: 0 5%;
+  .text-link {
+    position: relative;
+    z-index: 10;
+    margin-bottom: 50px;
+  }
 
-    .logo {
-      width: 120px;
-      height: 120px;
-      margin: 20px auto 8px;
-      border-radius: 10%;
-      background: url("/assets/images/logo/alt-logo.png") no-repeat;
-      background-size: 100%;
-    }
-
-    .form-list {
-      padding: 0;
-      margin-bottom: 0;
-
-      ion-item {
-        background: none;
-        padding: 0;
-
-        ion-label {
-          font-size: 1em;
-          font-weight: normal;
-          color: var(--ion-color-light);
-        }
-
-        input {
-          color: var(--ion-color-light);
-        }
-      }
-    }
-
-    .text-link {
-      position: relative;
-      z-index: 10;
-      margin-bottom: 50px;
-    }
-
-    .text-media {
-      position: relative;
-      z-index: 20;
-      font-size: 18px;
-      color: var(--ion-color-dark-shade);
-      margin-top: 30px;
-    }
+  .text-media {
+    position: relative;
+    z-index: 20;
+    font-size: 18px;
+    color: var(--ion-color-dark-shade);
+    margin-top: 30px;
   }
 }
