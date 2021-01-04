@@ -1,20 +1,26 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
+import { Routes, RouterModule } from "@angular/router";
 
-import { IonicModule } from '@ionic/angular';
+import { IonicModule } from "@ionic/angular";
+import { HeaderMenuComponent } from "../../components/header-menu/header-menu.component";
+import { DealsPage } from "./deals.page";
 
-import { DealsPageRoutingModule } from './deals-routing.module';
-
-import { DealsPage } from './deals.page';
+const routes: Routes = [
+  {
+    path: "",
+    component: DealsPage,
+  },
+];
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DealsPageRoutingModule
+    RouterModule.forChild(routes),
   ],
-  declarations: [DealsPage]
+  declarations: [HeaderMenuComponent, DealsPage],
 })
 export class DealsPageModule {}

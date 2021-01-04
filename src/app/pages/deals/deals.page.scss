@@ -1,9 +1,9 @@
-.card-container {
+.wrapper-deals {
   &::before {
     content: "";
     width: 100%;
     display: block;
-    padding-top: 5rem;
+    padding-top: 4rem;
     background: linear-gradient(
       135deg,
       var(--ion-color-dark),
