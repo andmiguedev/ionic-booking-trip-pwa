@@ -6,4 +6,10 @@
       var(--ion-color-primary)
     );
   }
+
+  .text-link {
+    position: relative;
+    z-index: 10;
+    margin-bottom: 50px;
+  }
 }

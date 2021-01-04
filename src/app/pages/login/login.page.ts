@@ -1,9 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import {
+  MenuController,
   AlertController,
   LoadingController,
   ToastController,
+  NavController,
 } from "@ionic/angular";
 
 @Component({
@@ -15,11 +17,19 @@ export class LoginPage implements OnInit {
   public loginForm: FormGroup;
 
   constructor(
+    private menuController: MenuController,
     private alertController: AlertController,
     private loadingController: LoadingController,
     private toastController: ToastController,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private navController: NavController
   ) {}
+
+  // Prevents User from sliding in mobile Menu
+  // without being authenticated
+  ionViewWillEnter() {
+    this.menuController.enable(false);
+  }
 
   ngOnInit() {
     this.validateFormFields();
@@ -76,5 +86,9 @@ export class LoginPage implements OnInit {
     });
 
     await alert.present();
+  }
+
+  openRegisterPage() {
+    this.navController.navigateForward("/register");
   }
 }

@@ -1,82 +1,92 @@
 <ion-content class="ion-padding animated fadeIn visitor">
   <div class="content">
-    <form class="form-fields">
-      <ion-grid>
-        <ion-row>
-          <ion-col size="6">
-            <ion-item class="ion-no-padding animated fadeInUp">
-              <ion-label position="floating" color="light">
-                First name
-              </ion-label>
-              <ion-input color="secondary" type="text"></ion-input>
-            </ion-item>
-          </ion-col>
-          <ion-col size="6">
-            <ion-item class="ion-no-padding animated fadeInUp">
-              <ion-label position="floating" color="light">
-                Last name
-              </ion-label>
-              <ion-input color="secondary" type="text"></ion-input>
-            </ion-item>
-          </ion-col>
-          <ion-col size="6">
-            <ion-item class="ion-no-padding animated fadeInUp">
-              <ion-label position="floating" color="light"> Gender </ion-label>
-              <ion-input color="secondary" type="text"></ion-input>
-            </ion-item>
-          </ion-col>
-          <ion-col size="6">
-            <ion-item class="ion-no-padding animated fadeInUp">
-              <ion-label position="floating" color="light"> Age </ion-label>
-              <ion-input color="secondary" type="text"></ion-input>
-            </ion-item>
-          </ion-col>
-          <ion-col size="12">
-            <ion-item class="ion-no-padding animated fadeInUp">
-              <ion-label position="floating" color="light">Country </ion-label>
-              <ion-input color="secondary" type="text"></ion-input>
-            </ion-item>
-          </ion-col>
-          <ion-col size="12">
-            <ion-item class="ion-no-padding animated fadeInUp">
-              <ion-label position="floating" color="light"
-                >Current address
-              </ion-label>
-              <ion-input color="secondary" type="text"></ion-input>
-            </ion-item>
-          </ion-col>
-          <ion-col size="12">
-            <ion-item class="ion-no-padding animated fadeInUp">
-              <ion-label position="floating" color="light"> Email </ion-label>
-              <ion-input color="secondary" type="text"></ion-input>
-            </ion-item>
-          </ion-col>
-          <ion-col size="12">
-            <ion-item class="ion-no-padding animated fadeInUp">
-              <ion-label position="floating" color="light">
-                Password
-              </ion-label>
-              <ion-input color="secondary" type="text"></ion-input>
-            </ion-item>
-          </ion-col>
-          <ion-col size="12">
-            <ion-item class="ion-no-padding animated fadeInUp">
-              <ion-label position="floating" color="light">
-                Confirm password
-              </ion-label>
-              <ion-input color="secondary" type="text"></ion-input>
-            </ion-item>
-          </ion-col>
-          <ion-col size="12">
-            <ion-item class="ion-no-padding animated fadeInUp">
-              <ion-label position="floating" color="light">
-                Phone number
-              </ion-label>
-              <ion-input color="secondary" type="text"></ion-input>
-            </ion-item>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
+    <div class="ion-padding-horizontal ion-text-center animated fadeInDown">
+      <div class="logo"></div>
+      <h4 class="ion-no-margin">
+        <ion-text color="secondary"> Book Trip </ion-text>
+      </h4>
+    </div>
+
+    <form class="field-forms" [formGroup]="registerForm">
+      <ion-item class="ion-no-padding animated fadeInUp">
+        <ion-label position="floating" color="light">
+          <ion-icon name="person" item-start color="secondary"></ion-icon>
+          &nbsp;Name
+        </ion-label>
+        <ion-input
+          color="secondary"
+          type="text"
+          color="secondary"
+          formControlName="name"
+        ></ion-input>
+      </ion-item>
+      <p
+        class="text-8"
+        *ngIf="registerForm.get('name').touched && registerForm.get('name').hasError('required')"
+      >
+        <ion-text color="danger"> Check your Name make sure is valid </ion-text>
+      </p>
+      <ion-item class="ion-no-padding animated fadeInUp">
+        <ion-label position="floating" color="light">
+          <ion-icon name="mail" item-start color="secondary"></ion-icon>
+          &nbsp;Email Address
+        </ion-label>
+        <ion-input
+          color="secondary"
+          type="email"
+          formControlName="email"
+        ></ion-input>
+      </ion-item>
+      <p
+        class="text-8"
+        *ngIf="registerForm.get('email').touched && registerForm.get('email').hasError('required')"
+      >
+        <ion-text color="danger">
+          Check your Email make sure is valid
+        </ion-text>
+      </p>
+      <ion-item class="ion-no-padding animated fadeInUp">
+        <ion-label position="floating" color="light">
+          <ion-icon name="lock-closed" item-start color="secondary"></ion-icon>
+          &nbsp;Password
+        </ion-label>
+        <ion-input
+          color="secondary"
+          type="password"
+          formControlName="password"
+        ></ion-input>
+      </ion-item>
+      <p
+        class="text-8"
+        *ngIf="registerForm.get('password').touched && registerForm.get('password').hasError('required')"
+      >
+        <ion-text color="danger">
+          Check your Password make sure is valid
+        </ion-text>
+      </p>
+      <ion-item class="ion-no-padding animated fadeInUp">
+        <ion-label position="floating" color="light">
+          <ion-icon
+            name="phone-portrait"
+            item-start
+            color="secondary"
+          ></ion-icon>
+          &nbsp;Phone Number
+        </ion-label>
+        <ion-input
+          color="secondary"
+          type="number"
+          formControlName="phone"
+        ></ion-input>
+      </ion-item>
+      <p
+        class="text-8"
+        *ngIf="registerForm.get('phone').touched && registerForm.get('phone').hasError('required')"
+      >
+        <ion-text color="danger">
+          Check your Phone make sure is valid
+        </ion-text>
+      </p>
     </form>
 
     <div class="ion-margin-top">
@@ -88,16 +98,31 @@
         color="secondary"
         tappable
       >
-        Sign up
+        Sign Up
       </ion-button>
     </div>
-
     <div class="ion-text-center ion-margin-top">
-      <span tappable>
+      <span (click)="openLoginPage()" tappable>
         <ion-text color="light">
-          <strong>Already have an account?</strong>
+          <h6>Already have an account?</h6>
         </ion-text>
       </span>
+    </div>
+    <p class="ion-text-center">
+      <ion-text color="light"> Or </ion-text>
+    </p>
+    <div class="ion-margin-top">
+      <ion-button
+        icon-left
+        size="medium"
+        expand="full"
+        shape="round"
+        color="primary"
+        tappable
+      >
+        <ion-icon name="logo-facebook"></ion-icon>
+        &nbsp; Continue with Facebook
+      </ion-button>
     </div>
   </div>
 </ion-content>
