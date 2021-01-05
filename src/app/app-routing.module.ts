@@ -38,6 +38,10 @@ const routes: Routes = [
         (m) => m.SearchFlightPageModule
       ),
   },
+  {
+    path: 'pick-location',
+    loadChildren: () => import('./pages/shared/pick-location/pick-location.module').then( m => m.PickLocationPageModule)
+  },
 ];
 
 @NgModule({
