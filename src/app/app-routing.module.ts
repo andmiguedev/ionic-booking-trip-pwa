@@ -32,15 +32,18 @@ const routes: Routes = [
       import("./pages/deals/deals.module").then((m) => m.DealsPageModule),
   },
   {
-    path: "search-flight",
+    path: "search-flights",
     loadChildren: () =>
-      import("./pages/search-flight/search-flight.module").then(
-        (m) => m.SearchFlightPageModule
+      import("./pages/search-flights/search-flights.module").then(
+        (m) => m.SearchFlightsPageModule
       ),
   },
   {
-    path: 'pick-location',
-    loadChildren: () => import('./pages/shared/pick-location/pick-location.module').then( m => m.PickLocationPageModule)
+    path: "pick-location",
+    loadChildren: () =>
+      import("./pages/shared/pick-location/pick-location.module").then(
+        (m) => m.PickLocationPageModule
+      ),
   },
 ];
 

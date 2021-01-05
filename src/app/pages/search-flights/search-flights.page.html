@@ -12,7 +12,7 @@
     <ion-card class="search-wrapper ion-margin-bottom">
       <ion-card-content class="ion-no-padding">
         <ion-card class="ion-no-margin bg-white">
-          <ion-item color="light" tappable>
+          <ion-item (click)="chooseLocation('origin')" color="light" tappable>
             <ion-icon
               name="airplane"
               color="dark"
@@ -21,14 +21,19 @@
             ></ion-icon>
             <ion-label>
               <p>
-                <ion-text color="tertiary">Departure</ion-text>
+                <ion-text color="tertiary">Origin</ion-text>
               </p>
               <h2 class="fw-700">
-                <ion-text color="primary"> Miami, United States </ion-text>
+                <ion-text color="primary"> Departure Location </ion-text>
               </h2>
             </ion-label>
           </ion-item>
-          <ion-item lines="none" color="light" tappable>
+          <ion-item
+            (click)="chooseLocation('destination')"
+            lines="none"
+            color="light"
+            tappable
+          >
             <ion-icon
               name="airplane"
               color="dark"
@@ -37,10 +42,10 @@
             ></ion-icon>
             <ion-label>
               <p>
-                <ion-text color="tertiary"> Arrival </ion-text>
+                <ion-text color="tertiary">Destination </ion-text>
               </p>
               <h2 class="fw-700">
-                <ion-text color="primary"> San Juan, Puerto Rico </ion-text>
+                <ion-text color="primary"> Arrival Location </ion-text>
               </h2>
             </ion-label>
           </ion-item>

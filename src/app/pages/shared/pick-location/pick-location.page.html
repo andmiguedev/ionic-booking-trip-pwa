@@ -16,7 +16,7 @@
 
   <ion-toolbar color="primary">
     <ion-searchbar
-      (ionInput)="searchLocations($event)"
+      (ionInput)="filterByLetters($event)"
       type="text"
       placeholder="Find specific location"
       animated="true"
@@ -25,7 +25,12 @@
 </ion-header>
 
 <ion-content class="animated fadeIn" tappable>
-  <ion-item *ngFor="let place of locations.recent" color="tertiary" tappable>
+  <ion-item
+    (click)="pickLocation('place')"
+    *ngFor="let place of locations.recent"
+    color="tertiary"
+    tappable
+  >
     <ion-icon name="locate" color="light" slot="start"></ion-icon>
     <ion-text color="dark"><strong>{{ place.name }}</strong></ion-text>
   </ion-item>
@@ -33,7 +38,7 @@
     *ngFor="let place of searchResults"
     class="bg-light"
     tappable
-    (click)="filterByLetters(term)"
+    (click)="pickLocation(place)"
   >
     <ion-icon name="time" color="dark" slot="start"></ion-icon>
     <ion-text color="primary">{{ place.name }}</ion-text>

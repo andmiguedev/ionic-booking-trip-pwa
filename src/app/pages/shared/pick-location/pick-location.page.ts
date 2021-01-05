@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from "@angular/core";
+import { ModalController } from "@ionic/angular";
 import { Storage } from "@ionic/storage";
 
 @Component({
-  selector: "app-pick-location",
+  selector: "pick-location",
   templateUrl: "./pick-location.page.html",
   styleUrls: ["./pick-location.page.scss"],
 })
@@ -11,8 +12,8 @@ export class PickLocationPage implements OnInit {
   searchResults: any;
 
   // Type assertion not defined
-  @Input() storageAction: any;
-  @Input() search: any;
+  @Input() origin: any;
+  @Input() sampleLocation: any;
 
   locations: any = {
     placesList: [
@@ -65,7 +66,10 @@ export class PickLocationPage implements OnInit {
     ],
   };
 
-  constructor(private storage: Storage) {}
+  constructor(
+    private storage: Storage,
+    private modalController: ModalController
+  ) {}
 
   ngOnInit() {
     // console.log(this.selectedPlace);
@@ -73,7 +77,7 @@ export class PickLocationPage implements OnInit {
     // console.log(this.searchResults);
   }
 
-  searchLocations(event: any) {
+  filterByLetters(event: any) {
     // Process search bar keyboard event
     let fetchValue = event ? event.target.value : "";
 
@@ -89,10 +93,21 @@ export class PickLocationPage implements OnInit {
     }
   }
 
-  filterByLetters(term) {
-    if (this.storageAction) {
-      this.storage.set("place", term.name);
-      this.search.pickup = term.name;
+  pickLocation(place) {
+    if (this.origin === "origin") {
+      this.storage.set("recent", place.name);
+      this.sampleLocation.pickup = place.name;
     }
+
+    if (this.origin === "destination") {
+      this.storage.set("departure", place.name);
+      this.sampleLocation.pickup = place.name;
+    }
+
+    this.modalController.dismiss();
+  }
+
+  closeSearchBar() {
+    this.modalController.dismiss();
   }
 }

@@ -8,7 +8,8 @@
     <div class="ion-padding-horizontal ion-text-center animated fadeInRight">
       <div class="logo"></div>
       <h4 class="ion-no-margin">
-        <ion-text color="secondary" class="fw-700">Book Trip</ion-text>
+        <ion-text color="tertiary" class="fw-300">Booking</ion-text>
+        <ion-text color="light" class="fw-700">Trip</ion-text>
       </h4>
     </div>
 
@@ -27,7 +28,7 @@
       </ion-item>
       <!-- Validate for Email address -->
       <p
-        class="text-8"
+        class="text-10"
         *ngIf="loginForm.get('email').touched && loginForm.get('email').hasError('required')"
       >
         <ion-text color="danger"> Check your Email and try again </ion-text>
@@ -44,7 +45,7 @@
         ></ion-input>
       </ion-item>
       <p
-        class="text-8"
+        class="text-10"
         *ngIf="loginForm.get('password').touched && loginForm.get('password').hasError('required')"
       >
         <ion-text color="danger"> Check your Password and try again </ion-text>

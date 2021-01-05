@@ -1,17 +1,25 @@
-import { Component, OnInit } from "@angular/core";
-import { MenuController } from "@ionic/angular";
+import { Component } from "@angular/core";
+import { NavController, LoadingController } from "@ionic/angular";
 
 @Component({
   selector: "app-deals",
   templateUrl: "./deals.page.html",
   styleUrls: ["./deals.page.scss"],
 })
-export class DealsPage implements OnInit {
-  constructor(private menuController: MenuController) {}
+export class DealsPage {
+  constructor(
+    private loadingController: LoadingController,
+    private navController: NavController
+  ) {}
 
-  IonViewWillEnter() {
-    this.menuController.enable(false);
+  async loadBookingForm() {
+    const loader = await this.loadingController.create({
+      duration: 2000,
+    });
+
+    loader.present();
+    loader.onWillDismiss().then(() => {
+      this.navController.navigateForward("search-flights");
+    });
   }
-
-  ngOnInit() {}
 }

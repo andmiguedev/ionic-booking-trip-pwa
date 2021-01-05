@@ -46,4 +46,8 @@ export class WalkthroughPage {
   onNextSlide() {
     this.slides.slideNext(1000, false);
   }
+
+  openLoginPage() {
+    this.navController.navigateForward("/login");
+  }
 }

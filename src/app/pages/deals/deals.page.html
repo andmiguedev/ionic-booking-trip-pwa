@@ -14,7 +14,11 @@
       </ion-card-header>
 
       <ion-card-content class="offer-card">
-        <ion-card class="ion-no-margin ion-margin-bottom" tappable>
+        <ion-card
+          (click)="loadBookingForm()"
+          class="ion-no-margin ion-margin-bottom"
+          tappable
+        >
           <img src="assets/images/covers/flight-banner.jpg" />
           <div class="offer-title">Puerto Rico</div>
           <div class="offer-subtitle">

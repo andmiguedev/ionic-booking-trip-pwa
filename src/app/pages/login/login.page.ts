@@ -60,7 +60,7 @@ export class LoginPage implements OnInit {
           role: "cancel",
           cssClass: "secondary",
           handler: () => {
-            console.log("Customer canceled request for forgotten password");
+            console.log("User canceled request to reset a password");
           },
         },
         {

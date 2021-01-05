@@ -3,7 +3,8 @@
     <div class="ion-padding-horizontal ion-text-center animated fadeInDown">
       <div class="logo"></div>
       <h4 class="ion-no-margin">
-        <ion-text color="secondary"> Book Trip </ion-text>
+        <ion-text color="tertiary" class="fw-300">Booking</ion-text>
+        <ion-text color="light" class="fw-700">Trip</ion-text>
       </h4>
     </div>
 
@@ -21,7 +22,7 @@
         ></ion-input>
       </ion-item>
       <p
-        class="text-8s"
+        class="text-10"
         *ngIf="registerForm.get('name').touched && registerForm.get('name').hasError('required')"
       >
         <ion-text color="danger"> Check your Name make sure is valid </ion-text>
@@ -38,7 +39,7 @@
         ></ion-input>
       </ion-item>
       <p
-        class="text-8"
+        class="text-10"
         *ngIf="registerForm.get('email').touched && registerForm.get('email').hasError('required')"
       >
         <ion-text color="danger">
@@ -57,7 +58,7 @@
         ></ion-input>
       </ion-item>
       <p
-        class="text-8"
+        class="text-10"
         *ngIf="registerForm.get('password').touched && registerForm.get('password').hasError('required')"
       >
         <ion-text color="danger">
@@ -80,7 +81,7 @@
         ></ion-input>
       </ion-item>
       <p
-        class="text-8"
+        class="text-10"
         *ngIf="registerForm.get('phone').touched && registerForm.get('phone').hasError('required')"
       >
         <ion-text color="danger">
