@@ -1,0 +1,46 @@
+:host {
+  ion-content {
+    --background: var(--ion-color-light);
+
+    .search-container {
+      &::before {
+        content: "";
+        width: 100%;
+        display: block;
+        padding-top: 5rem;
+        background: linear-gradient(
+          135deg,
+          var(--ion-color-dark),
+          var(--ion-color-primary),
+          var(--ion-color-tertiary)
+        );
+        background-repeat: repeat-x;
+      }
+
+      .search-wrapper {
+        margin-top: -4rem;
+      }
+    }
+
+    ion-item {
+      --border-style: dotted;
+      --border-radius: 4px;
+
+      .departure {
+        transform: rotate(340deg);
+      }
+
+      .arrival {
+        transform: rotate(15deg);
+      }
+    }
+
+    ion-checkbox {
+      --size: 18px;
+    }
+
+    .one-way {
+      margin-top: -10px;
+    }
+  }
+}

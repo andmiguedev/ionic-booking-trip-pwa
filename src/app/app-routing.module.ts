@@ -20,12 +20,23 @@ const routes: Routes = [
       import("./pages/login/login.module").then((m) => m.LoginPageModule),
   },
   {
-    path: 'register',
-    loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
+    path: "register",
+    loadChildren: () =>
+      import("./pages/register/register.module").then(
+        (m) => m.RegisterPageModule
+      ),
   },
   {
-    path: 'deals',
-    loadChildren: () => import('./pages/deals/deals.module').then( m => m.DealsPageModule)
+    path: "deals",
+    loadChildren: () =>
+      import("./pages/deals/deals.module").then((m) => m.DealsPageModule),
+  },
+  {
+    path: "search-flight",
+    loadChildren: () =>
+      import("./pages/search-flight/search-flight.module").then(
+        (m) => m.SearchFlightPageModule
+      ),
   },
 ];
 

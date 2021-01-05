@@ -1,0 +1,232 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Search Flights</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="search-container">
+    <ion-card class="search-wrapper ion-margin-bottom">
+      <ion-card-content class="ion-no-padding">
+        <ion-card class="ion-no-margin bg-white">
+          <ion-item color="light" tappable>
+            <ion-icon
+              name="airplane"
+              color="dark"
+              class="departure"
+              slot="start"
+            ></ion-icon>
+            <ion-label>
+              <p>
+                <ion-text color="tertiary">Departure</ion-text>
+              </p>
+              <h2 class="fw-700">
+                <ion-text color="primary"> Miami, United States </ion-text>
+              </h2>
+            </ion-label>
+          </ion-item>
+          <ion-item lines="none" color="light" tappable>
+            <ion-icon
+              name="airplane"
+              color="dark"
+              class="arrival"
+              slot="start"
+            ></ion-icon>
+            <ion-label>
+              <p>
+                <ion-text color="tertiary"> Arrival </ion-text>
+              </p>
+              <h2 class="fw-700">
+                <ion-text color="primary"> San Juan, Puerto Rico </ion-text>
+              </h2>
+            </ion-label>
+          </ion-item>
+        </ion-card>
+
+        <ion-grid>
+          <ion-row>
+            <ion-col size="12">
+              <ion-item class="one-way">
+                <ion-label color="primary" class="text-10">
+                  One way plane ticket ?
+                </ion-label>
+                <ion-checkbox slot="start"></ion-checkbox>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col size="12">
+              <ion-item color="light" lines="none">
+                <ion-icon
+                  class="ion-no-margin"
+                  size="small"
+                  name="calendar"
+                  color="primary"
+                  slot="start"
+                ></ion-icon>
+                <ion-label>
+                  <h2 class="fw-700">
+                    <ion-text color="primary" class="text-10">
+                      &nbsp;Select departure date
+                    </ion-text>
+                  </h2>
+                </ion-label>
+                <ion-datetime
+                  class="fw-700"
+                  color="primary"
+                  displayFormat="MMMM D YYYY"
+                  pickerFormat="MMMM/D/ h:mm A"
+                >
+                </ion-datetime>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col size="12">
+              <ion-item color="light" lines="none">
+                <ion-icon
+                  class="ion-no-margin"
+                  size="small"
+                  name="calendar"
+                  color="primary"
+                  slot="start"
+                ></ion-icon>
+                <ion-label>
+                  <h2 class="fw-700">
+                    <ion-text color="primary" class="text-10">
+                      &nbsp;Select returning date
+                    </ion-text>
+                  </h2>
+                </ion-label>
+                <ion-datetime
+                  color="primary"
+                  class="fw-700"
+                  displayFormat="MMMM D YYYY"
+                  pickerFormat="MMMM/D/ h:mm A"
+                >
+                </ion-datetime>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="card-options">
+            <ion-col size="6">
+              <ion-item>
+                <ion-label class="ion-no-padding text-primary text-8">
+                  <ion-text color="dark"> Adults </ion-text>
+                </ion-label>
+                <ion-select
+                  class="ion-no-padding text-dark fw-700"
+                  cancelText="Cancel"
+                  okText="OK"
+                >
+                  <ion-select-option value="1" selected="true"
+                    >1</ion-select-option
+                  >
+                  <ion-select-option value="2">2</ion-select-option>
+                  <ion-select-option value="3">3</ion-select-option>
+                  <ion-select-option value="4">4</ion-select-option>
+                  <ion-select-option value="5">5</ion-select-option>
+                  <ion-select-option value="6">6</ion-select-option>
+                  <ion-select-option value="7">7</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+
+            <ion-col size="6">
+              <ion-item>
+                <ion-label
+                  class="ion-no-padding ion-no-margin text-primary text-8"
+                >
+                  <ion-text color="dark"> Children </ion-text>
+                </ion-label>
+                <ion-select
+                  class="ion-no-padding text-dark fw-700"
+                  cancelText="Cancel"
+                  okText="OK"
+                >
+                  <ion-select-option value="0" selected="true"
+                    >0</ion-select-option
+                  >
+                  <ion-select-option value="1">1</ion-select-option>
+                  <ion-select-option value="2">2</ion-select-option>
+                  <ion-select-option value="3">3</ion-select-option>
+                  <ion-select-option value="4">4</ion-select-option>
+                  <ion-select-option value="5">5</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col size="11">
+              <ion-item>
+                <ion-label
+                  class="ion-no-padding ion-no-margin text-primary text-8"
+                >
+                  <ion-text color="dark"> Airline </ion-text>
+                </ion-label>
+                <ion-select
+                  cancelText="Cancel"
+                  okText="OK"
+                  class="ion-no-padding text-dark fw700"
+                >
+                  <ion-select-option value="1" selected="true"
+                    >Jet Blue</ion-select-option
+                  >
+                  <ion-select-option value="2">Delta</ion-select-option>
+                  <ion-select-option value="3"
+                    >American Airlines</ion-select-option
+                  >
+                  <ion-select-option value="4"
+                    >Any other Airline</ion-select-option
+                  >
+                </ion-select>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="11">
+              <ion-item>
+                <ion-label
+                  class="ion-no-padding ion-no-margin text-primary text-8"
+                >
+                  <ion-text color="dark"> Preferred class </ion-text>
+                </ion-label>
+                <ion-select
+                  cancelText="Cancel"
+                  okText="OK"
+                  class="ion-no-padding text-dark fw700"
+                >
+                  <ion-select-option value="1" selected="true"
+                    >Economy</ion-select-option
+                  >
+                  <ion-select-option value="2"
+                    >Premium Economy</ion-select-option
+                  >
+                  <ion-select-option value="3">Business</ion-select-option>
+                  <ion-select-option value="4">First Class</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+
+      <ion-button
+        class="ion-no-margin"
+        color="secondary"
+        size="large"
+        expand="full"
+      >
+        <ion-icon name="search" slot="start"></ion-icon>
+        Look itinerary
+      </ion-button>
+    </ion-card>
+  </div>
+</ion-content>

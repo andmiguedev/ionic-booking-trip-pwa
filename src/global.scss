@@ -27,7 +27,6 @@
 
 /* Custom CSS libraries */
 @import "theme/third-party/animate.css";
-
 @import "theme/forms.scss";
 
 ion-item {
@@ -91,6 +90,10 @@ ion-item {
 
 .text-15 {
   font-size: 1.5rem !important;
+}
+
+.text-11 {
+  font-size: 1.1rem !important;
 }
 
 .text-10 {
