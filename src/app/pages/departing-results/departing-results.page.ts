@@ -1,4 +1,4 @@
-import { ItinerariesService } from "./../../services/data/itineraries/itineraries.service";
+import { DeparturesService } from "./../../services/data/departures/departures.service";
 import { Component } from "@angular/core";
 
 @Component({
@@ -7,9 +7,9 @@ import { Component } from "@angular/core";
   styleUrls: ["./departing-results.page.scss"],
 })
 export class DepartingResultsPage {
-  public itineraryResults: any;
+  public departureResults: any;
 
-  constructor(private itineraryService: ItinerariesService) {
-    this.itineraryResults = this.itineraryService.getAllItineraries();
+  constructor(private departuresService: DeparturesService) {
+    this.departureResults = this.departuresService.getRecentDepartures();
   }
 }

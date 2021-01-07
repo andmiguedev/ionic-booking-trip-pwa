@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ModalController } from "@ionic/angular";
+import { ModalController, NavController } from "@ionic/angular";
 
 import { PickLocationPage } from "../shared/pick-location/pick-location.page";
 
@@ -17,7 +17,10 @@ export class SearchFlightsPage implements OnInit {
     destination: new Date().toISOString(),
   };
 
-  constructor(private modalController: ModalController) {}
+  constructor(
+    private modalController: ModalController,
+    private navController: NavController
+  ) {}
 
   ngOnInit() {}
 
@@ -31,5 +34,9 @@ export class SearchFlightsPage implements OnInit {
     });
 
     return await modal.present();
+  }
+
+  searchItineraries() {
+    this.navController.navigateForward("/departing-results");
   }
 }

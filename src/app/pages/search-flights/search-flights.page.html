@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-back-button text=""></ion-back-button>
     </ion-buttons>
     <ion-title>Search Flights</ion-title>
   </ion-toolbar>
@@ -225,6 +225,7 @@
       </ion-card-content>
 
       <ion-button
+        (click)="searchItineraries()"
         class="ion-no-margin"
         color="secondary"
         size="large"

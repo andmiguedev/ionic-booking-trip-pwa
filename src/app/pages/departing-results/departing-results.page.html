@@ -10,11 +10,11 @@
 <ion-content>
   <div class="ion-padding bg-secondary">
     <p class="ion-no-margin text-white">
-      <strong>{{ itineraryResults?.length }} </strong>results found
+      <strong>{{ departureResults?.length }} </strong>results found
     </p>
   </div>
 
-  <ion-card class="bg-white" *ngFor="let flight of itineraryResults" tappable>
+  <ion-card class="bg-white" *ngFor="let flight of departureResults" tappable>
     <ion-card-content class="ion-no-padding">
       <ion-item>
         <ion-thumbnail slot="start">

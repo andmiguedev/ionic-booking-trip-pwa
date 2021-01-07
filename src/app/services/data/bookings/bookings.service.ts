@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 
-import { DepartureService } from "./../departure/departure.service";
+import { DeparturesService } from "./../departures/departures.service";
 import { ArrivalService } from "./../arrival/arrival.service";
 
 @Injectable({
@@ -11,7 +11,7 @@ export class BookingsService {
   bookingItinerary: Array<any> = [];
 
   constructor(
-    private departure: DepartureService,
+    private departure: DeparturesService,
     private arrival: ArrivalService
   ) {}
   renderBookingitinerary(departure, arrival, bookingId) {
