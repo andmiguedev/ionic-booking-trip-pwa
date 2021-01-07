@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Departing Results</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding bg-secondary">
+    <p class="ion-no-margin text-white">
+      <strong>{{ itineraryResults?.length }} </strong>results found
+    </p>
+  </div>
+
+  <ion-card class="bg-white" *ngFor="let flight of itineraryResults" tappable>
+    <ion-card-content class="ion-no-padding">
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <img [src]="flight.companyLogo" />
+        </ion-thumbnail>
+
+        <ion-label>
+          <h2>
+            <ion-text color="dark">
+              <strong>{{ flight.departureTime }}</strong> -
+              <strong>{{ flight.arrivalTime }}</strong>
+            </ion-text>
+          </h2>
+          <h3>
+            <ion-text class="ion-margin-top" color="tertiary"
+              >{{ flight.duration }} {{ flight.layover }}</ion-text
+            >
+          </h3>
+          <h3>
+            <ion-text color="primary">
+              <strong> {{ flight.originCode }} &nbsp;</strong
+              ><ion-icon name="airplane"></ion-icon>
+              <strong>&nbsp;{{ flight.destinationCode }}</strong>
+            </ion-text>
+          </h3>
+        </ion-label>
+
+        <div slot="end">
+          <ion-badge color="success">
+            <h2 class="text-white fw-500">
+              {{ flight.ticketPrice | currency:'USD':'symbol':'2.0' }}
+            </h2>
+          </ion-badge>
+          <p class="text-6">
+            <ion-text color="primary"> {{ flight.bookingType }} </ion-text>
+          </p>
+        </div>
+      </ion-item>
+
+      <ion-item color="light" class="text-7 ion-text-center">
+        <ion-label>
+          <ion-text color="success" class="fw-700">Clean Cabin &nbsp;</ion-text>
+          • &nbsp;{{ flight.purchaseClass }} | {{ flight.aircraft }}
+        </ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

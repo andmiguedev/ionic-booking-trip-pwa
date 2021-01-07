@@ -2,7 +2,7 @@ export let ROUNDTRIP = [
   {
     carrierId: 1,
     airline: "Delta Airlines",
-    bookingType: "roundtrip",
+    bookingType: "round trip",
     duration: "1h 42m",
     departureTime: "6:39 am",
     arrivalTime: "8:21 am",
@@ -17,7 +17,7 @@ export let ROUNDTRIP = [
   {
     carrierId: 2,
     airline: "Jet Blue",
-    bookingType: "roundtrip",
+    bookingType: "round trip",
     duration: "2h 52m",
     departureTime: "7:51 am",
     arrivalTime: "10:43 am",
@@ -32,7 +32,7 @@ export let ROUNDTRIP = [
   {
     carrierId: 3,
     airline: "Southwest Airlines",
-    bookingType: "roundtrip",
+    bookingType: "round trip",
     duration: "1h 40m",
     departureTime: "11:05 am",
     arrivalTime: "12:45 pm",
@@ -47,7 +47,7 @@ export let ROUNDTRIP = [
   {
     carrierId: 4,
     airline: "Spirit Airlines",
-    bookingType: "roundtrip",
+    bookingType: "round trip",
     duration: "3h 02m",
     departureTime: "7:41 am",
     arrivalTime: "10:43 am",
@@ -62,7 +62,7 @@ export let ROUNDTRIP = [
   {
     carrierId: 5,
     airline: "United Airlines",
-    bookingType: "roundtrip",
+    bookingType: "round trip",
     duration: "4h 23 m",
     departureTime: "7:54 am",
     arrivalTime: "10:27 am",

@@ -45,6 +45,13 @@ const routes: Routes = [
         (m) => m.PickLocationPageModule
       ),
   },
+  {
+    path: "departing-results",
+    loadChildren: () =>
+      import("./pages/departing-results/departing-results.module").then(
+        (m) => m.DepartingResultsPageModule
+      ),
+  },
 ];
 
 @NgModule({
