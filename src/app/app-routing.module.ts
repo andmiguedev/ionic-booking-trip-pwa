@@ -52,6 +52,13 @@ const routes: Routes = [
         (m) => m.DepartingResultsPageModule
       ),
   },
+  {
+    path: "returning-results",
+    loadChildren: () =>
+      import("./pages/returning-results/returning-results.module").then(
+        (m) => m.ReturningResultsPageModule
+      ),
+  },
 ];
 
 @NgModule({

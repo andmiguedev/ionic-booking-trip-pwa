@@ -1,5 +1,5 @@
-import { DeparturesService } from "./../../services/data/departures/departures.service";
 import { Component } from "@angular/core";
+import { ItinerariesService } from "./../../services/data/itineraries/itineraries.service";
 
 @Component({
   selector: "app-departing-results",
@@ -9,7 +9,7 @@ import { Component } from "@angular/core";
 export class DepartingResultsPage {
   public departureResults: any;
 
-  constructor(private departuresService: DeparturesService) {
-    this.departureResults = this.departuresService.getRecentDepartures();
+  constructor(private itinerariesService: ItinerariesService) {
+    this.departureResults = this.itinerariesService.getAllItineraries();
   }
 }
