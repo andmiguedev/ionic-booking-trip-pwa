@@ -4,6 +4,19 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>Departing Results</ion-title>
+    <ion-buttons slot="end">
+      <ion-button
+        (click)="lookReturningFlights()"
+        icon-only
+        tooltip="See Arrival Flights"
+        size="small"
+        color="light"
+        navTooltip
+      >
+        See Arrivals&nbsp;
+        <ion-icon name="airplane"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 

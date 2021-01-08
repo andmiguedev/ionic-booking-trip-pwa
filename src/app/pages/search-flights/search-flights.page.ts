@@ -1,5 +1,9 @@
 import { Component, OnInit } from "@angular/core";
-import { ModalController, NavController } from "@ionic/angular";
+import {
+  ModalController,
+  NavController,
+  LoadingController,
+} from "@ionic/angular";
 
 import { PickLocationPage } from "../shared/pick-location/pick-location.page";
 
@@ -9,17 +13,22 @@ import { PickLocationPage } from "../shared/pick-location/pick-location.page";
   styleUrls: ["./search-flights.page.scss"],
 })
 export class SearchFlightsPage implements OnInit {
+  public oneWayTicket: any = false;
+  public layoverTicket: any = false;
+
   // Schema for one way trip
   public sampleLocation: any = {
     recent: "Miami, United States",
     departure: "Same as departure",
     origin: new Date().toISOString(),
+    stop: new Date().toISOString(),
     destination: new Date().toISOString(),
   };
 
   constructor(
     private modalController: ModalController,
-    private navController: NavController
+    private navController: NavController,
+    private loadingController: LoadingController
   ) {}
 
   ngOnInit() {}
@@ -36,7 +45,13 @@ export class SearchFlightsPage implements OnInit {
     return await modal.present();
   }
 
-  searchItineraries() {
-    this.navController.navigateForward("/departing-results");
+  async findItineraries() {
+    const loader = await this.loadingController.create({
+      duration: 1000,
+    });
+    loader.present();
+    loader.onWillDismiss().then(() => {
+      this.navController.navigateForward("/departing-results");
+    });
   }
 }

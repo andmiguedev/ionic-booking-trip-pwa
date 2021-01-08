@@ -29,6 +29,28 @@
             </ion-label>
           </ion-item>
           <ion-item
+            *ngIf="layoverTicket"
+            (click)="chooseLocation('stop')"
+            color="light"
+            tappable
+          >
+            <ion-icon
+              name="airplane"
+              color="dark"
+              class="stop"
+              slot="start"
+            ></ion-icon>
+            <ion-label>
+              <p>
+                <ion-text color="tertiary">Layover</ion-text>
+              </p>
+              <h2 class="fw-700">
+                <ion-text color="primary"> Stop Location </ion-text>
+              </h2>
+            </ion-label>
+          </ion-item>
+
+          <ion-item
             (click)="chooseLocation('destination')"
             lines="none"
             color="light"
@@ -53,12 +75,26 @@
 
         <ion-grid>
           <ion-row>
-            <ion-col size="12">
-              <ion-item class="one-way">
+            <ion-col size="6">
+              <ion-item class="ion-no-padding one-way">
                 <ion-label color="primary" class="text-10">
-                  One way plane ticket ?
+                  One way ?
                 </ion-label>
-                <ion-checkbox slot="start"></ion-checkbox>
+                <ion-checkbox
+                  [(ngModel)]="oneWayTicket"
+                  slot="start"
+                ></ion-checkbox>
+              </ion-item>
+            </ion-col>
+            <ion-col size="6">
+              <ion-item class="ion-no-padding one-way">
+                <ion-label color="primary" class="text-10">
+                  Add stop ?
+                </ion-label>
+                <ion-checkbox
+                  [(ngModel)]="layoverTicket"
+                  slot="start"
+                ></ion-checkbox>
               </ion-item>
             </ion-col>
           </ion-row>
@@ -92,7 +128,7 @@
           </ion-row>
 
           <ion-row>
-            <ion-col size="12">
+            <ion-col size="12" *ngIf="!oneWayTicket">
               <ion-item color="light" lines="none">
                 <ion-icon
                   class="ion-no-margin"
@@ -225,7 +261,7 @@
       </ion-card-content>
 
       <ion-button
-        (click)="searchItineraries()"
+        (click)="findItineraries()"
         class="ion-no-margin"
         color="secondary"
         size="large"

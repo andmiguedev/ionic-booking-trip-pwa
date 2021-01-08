@@ -4,6 +4,8 @@ import { FormsModule } from "@angular/forms";
 import { Routes, RouterModule } from "@angular/router";
 
 import { IonicModule } from "@ionic/angular";
+import { TooltipsModule } from "ionic4-tooltips";
+
 import { DepartingResultsPage } from "./departing-results.page";
 
 const routes: Routes = [
@@ -19,6 +21,7 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes),
+    TooltipsModule,
   ],
   declarations: [DepartingResultsPage],
 })
