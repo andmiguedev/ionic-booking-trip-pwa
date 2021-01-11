@@ -1,6 +1,17 @@
 <ion-app>
   <ion-split-pane contentId="sideMenuContent">
-    <ion-menu contentId="sideMenuContent">
+    <ion-menu contentId="sideMenuContent" type="overlay">
+      <ion-header>
+        <div class="customer-info">
+          <ion-menu-toggle auto-hide="false">
+            <div class="avatar-img">
+              <img src="../assets/images/logo/alt-logo.png" />
+            </div>
+            <h2 class="text-8 fw-500">Customer Name</h2>
+            <p class="text-white">Last seen: today at 3:40 pm</p>
+          </ion-menu-toggle>
+        </div>
+      </ion-header>
       <!-- -->
       <ion-content class="bg-color">
         <ion-list>

@@ -19,7 +19,7 @@ export class DepartingResultsPage {
     this.departureResults = this.itinerariesService.getAllItineraries();
   }
 
-  lookReturningFlights() {
+  seeReturningFlights() {
     this.navController.navigateForward("/returning-results");
   }
 

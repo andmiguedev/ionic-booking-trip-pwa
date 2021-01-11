@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { NavController, LoadingController } from "@ionic/angular";
+import { PromotionsService } from "./../../services/data/promotions/promotions.service";
 
 @Component({
   selector: "app-deals",
@@ -7,14 +8,19 @@ import { NavController, LoadingController } from "@ionic/angular";
   styleUrls: ["./deals.page.scss"],
 })
 export class DealsPage {
+  public customerDeals: any;
+
   constructor(
+    private promotionsService: PromotionsService,
     private loadingController: LoadingController,
     private navController: NavController
-  ) {}
+  ) {
+    this.customerDeals = this.promotionsService.getAllPromotions();
+  }
 
   async loadBookingForm() {
     const loader = await this.loadingController.create({
-      duration: 2000,
+      duration: 1000,
     });
 
     loader.present();

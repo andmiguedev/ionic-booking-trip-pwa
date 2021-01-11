@@ -1,6 +1,6 @@
 import { Component, ViewChild } from "@angular/core";
 import { NavController, IonSlides } from "@ionic/angular";
-import { Slides } from "src/app/interfaces/slides.interface";
+import { Slides } from "src/app/models/interfaces/slides.interface";
 
 @Component({
   selector: "app-walkthrough",
@@ -45,6 +45,10 @@ export class WalkthroughPage {
   // Swipe to the next slide
   onNextSlide() {
     this.slides.slideNext(1000, false);
+  }
+
+  openFlightSearch() {
+    this.navController.navigateForward("/search-flights");
   }
 
   openLoginPage() {

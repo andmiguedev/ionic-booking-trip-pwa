@@ -1,72 +1,25 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import { Platform } from "@ionic/angular";
+
+import { ScreensService } from "./services/data/screens/screens.service";
 import { SplashScreen } from "@ionic-native/splash-screen/ngx";
 import { StatusBar } from "@ionic-native/status-bar/ngx";
-import { Pages } from "./interfaces/pages.interface";
 
 @Component({
   selector: "app-root",
   templateUrl: "app.component.html",
   styleUrls: ["app.component.scss"],
 })
-export class AppComponent implements OnInit {
-  public sideMenuPages: Array<Pages>;
+export class AppComponent {
+  public sideMenuPages: any;
 
   constructor(
+    private screensService: ScreensService,
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar
   ) {
-    this.sideMenuPages = [
-      {
-        title: "Home",
-        url: "/home",
-        current: "root",
-        icon: "home",
-      },
-      {
-        title: "Messages",
-        url: "/messages",
-        current: "forward",
-        icon: "mail",
-      },
-      {
-        title: "Booking List",
-        url: "/booking-list",
-        current: "forward",
-        icon: "book",
-      },
-      {
-        title: "Favorites",
-        url: "/favorite-list",
-        current: "forward",
-        icon: "heart",
-      },
-      {
-        title: "Cruise",
-        url: "/cruise-search",
-        current: "forward",
-        icon: "boat",
-      },
-      {
-        title: "Local Weather",
-        url: "/local-weather",
-        current: "forward",
-        icon: "partly-sunny",
-      },
-      {
-        title: "Support",
-        url: "/support",
-        current: "forward",
-        icon: "help-buoy",
-      },
-      {
-        title: "About",
-        url: "/about",
-        current: "forward",
-        icon: "information-circle-outline",
-      },
-    ];
+    this.sideMenuPages = this.screensService.getAllMobilePages();
   }
 
   initializeApp() {
@@ -78,6 +31,4 @@ export class AppComponent implements OnInit {
       }, 1000);
     });
   }
-
-  ngOnInit() {}
 }

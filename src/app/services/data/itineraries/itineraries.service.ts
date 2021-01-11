@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Flight } from "./../../../interfaces/flight.interface";
+import { Flight } from "./../../../models/interfaces/flight.interface";
 import { ROUNDTRIP } from "./local-flights";
 
 @Injectable({

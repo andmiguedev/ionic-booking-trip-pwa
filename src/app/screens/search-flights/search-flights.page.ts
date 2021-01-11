@@ -47,6 +47,7 @@ export class SearchFlightsPage implements OnInit {
 
   async findItineraries() {
     const loader = await this.loadingController.create({
+      message: "Searching...",
       duration: 1000,
     });
     loader.present();
