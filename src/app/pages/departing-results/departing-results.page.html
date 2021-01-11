@@ -27,7 +27,12 @@
     </p>
   </div>
 
-  <ion-card class="bg-white" *ngFor="let flight of departureResults" tappable>
+  <ion-card
+    (click)="seeFlightInfo()"
+    class="bg-white"
+    *ngFor="let flight of departureResults"
+    tappable
+  >
     <ion-card-content class="ion-no-padding">
       <ion-item>
         <ion-thumbnail slot="start">

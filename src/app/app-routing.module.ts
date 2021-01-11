@@ -59,6 +59,13 @@ const routes: Routes = [
         (m) => m.ReturningResultsPageModule
       ),
   },
+  {
+    path: "flight-information",
+    loadChildren: () =>
+      import("./pages/flight-information/flight-information.module").then(
+        (m) => m.FlightInformationPageModule
+      ),
+  },
 ];
 
 @NgModule({

@@ -1,0 +1,163 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Your Itinerary</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="bg-white">
+    <ion-card-header class="ion-no-padding">
+      <ion-item lines="none" color="light">
+        <ion-icon name="airplane"></ion-icon>
+        <ion-label>&nbsp;Departing </ion-label>
+      </ion-item>
+    </ion-card-header>
+
+    <ion-card-content class="ion-no-padding">
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <img [src]="outgoingFlight.companyLogo" />
+        </ion-thumbnail>
+
+        <ion-label>
+          <h2>
+            <ion-text color="dark">
+              <strong>{{ outgoingFlight.departureTime }}</strong> -
+              <strong>{{ outgoingFlight.arrivalTime }}</strong>
+            </ion-text>
+          </h2>
+          <h3>
+            <ion-text color="tertiary">
+              {{ outgoingFlight.duration }} ({{ outgoingFlight.layover }})
+            </ion-text>
+          </h3>
+          <h3>
+            <ion-text color="primary">
+              <strong>{{ outgoingFlight.originCode }} &nbsp;</strong>
+              <ion-icon name="airplane"></ion-icon>
+              <strong> &nbsp;{{ outgoingFlight.destinationCode }}</strong>
+            </ion-text>
+          </h3>
+        </ion-label>
+
+        <div slot="end">
+          <ion-badge color="success">
+            <h2 class="text-white fw-500">
+              {{ outgoingFlight.ticketPrice | currency:'USD':'symbol':'2.0' }}
+            </h2>
+          </ion-badge>
+          <p class="text-6">
+            <ion-text color="primary"> one way </ion-text>
+          </p>
+        </div>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="bg-white">
+    <ion-card-header class="ion-no-padding">
+      <ion-item lines="none" color="light">
+        <ion-icon name="airplane" class="return"></ion-icon>
+        <ion-label>&nbsp;Returning </ion-label>
+      </ion-item>
+    </ion-card-header>
+    <ion-card-content class="ion-no-padding">
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <img [src]="returningFlight.companyLogo" />
+        </ion-thumbnail>
+
+        <ion-label>
+          <h2>
+            <ion-text color="dark">
+              <strong>{{ returningFlight.departureTime }}</strong> -
+              <strong>{{ returningFlight.arrivalTime }}</strong>
+            </ion-text>
+          </h2>
+          <h3>
+            <ion-text color="tertiary">
+              {{ returningFlight.duration }} ({{ returningFlight.layover }})
+            </ion-text>
+          </h3>
+          <h3>
+            <ion-text color="primary">
+              <strong>{{ returningFlight.originCode }} &nbsp;</strong>
+              <ion-icon name="airplane"></ion-icon>
+              <strong>&nbsp;{{ returningFlight.destinationCode }}</strong>
+            </ion-text>
+          </h3>
+        </ion-label>
+
+        <div slot="end">
+          <ion-badge color="success">
+            <h2 class="text-white fw-500">
+              {{ returningFlight.ticketPrice | currency:'USD':'symbol':'2.0' }}
+            </h2>
+          </ion-badge>
+          <p class="text-6">
+            <ion-text color="primary"> one way </ion-text>
+          </p>
+        </div>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="bg-white">
+    <ion-card-header class="ion-no-padding">
+      <ion-item lines="none" color="light" class="fw-700">
+        <ion-label>Flight Info</ion-label>
+      </ion-item>
+    </ion-card-header>
+    <ion-card-content class="ion-no-padding">
+      <ion-item class="ion-text-left">
+        <ion-label>
+          <ion-text color="success" class="fw-500 text-7">
+            Departure flight
+          </ion-text>
+        </ion-label>
+        <h3>
+          <ion-text color="primary">
+            <strong class="text-6"
+              >{{ outgoingFlight.purchaseClass }} | {{
+              outgoingFlight.aircraft}}</strong
+            >
+          </ion-text>
+        </h3>
+      </ion-item>
+    </ion-card-content>
+    <ion-card-content class="ion-no-padding">
+      <ion-item class="ion-text-left">
+        <ion-label>
+          <ion-text color="success" class="fw-500 text-7">
+            Returning flight
+          </ion-text>
+        </ion-label>
+        <h3>
+          <ion-text color="primary">
+            <strong class="text-6"
+              >{{ returningFlight.purchaseClass }} | {{
+              returningFlight.aircraft}}</strong
+            >
+          </ion-text>
+        </h3>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-row>
+    <ion-col size="12">
+      <ion-button
+        class="ion-no-margin"
+        size="large"
+        expand="block"
+        color="secondary"
+      >
+        <ion-icon slot="start" name="briefcase"></ion-icon>
+        Confirm Itinerary
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-content>

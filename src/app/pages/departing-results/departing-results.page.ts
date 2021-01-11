@@ -1,5 +1,6 @@
-import { NavController } from "@ionic/angular";
 import { Component } from "@angular/core";
+import { NavController, LoadingController } from "@ionic/angular";
+
 import { ItinerariesService } from "./../../services/data/itineraries/itineraries.service";
 
 @Component({
@@ -12,6 +13,7 @@ export class DepartingResultsPage {
 
   constructor(
     private itinerariesService: ItinerariesService,
+    private loadingController: LoadingController,
     private navController: NavController
   ) {
     this.departureResults = this.itinerariesService.getAllItineraries();
@@ -19,5 +21,14 @@ export class DepartingResultsPage {
 
   lookReturningFlights() {
     this.navController.navigateForward("/returning-results");
+  }
+
+  async seeFlightInfo() {
+    const loader = await this.loadingController.create({
+      duration: 1000,
+    });
+
+    loader.present();
+    this.navController.navigateForward("/flight-information");
   }
 }

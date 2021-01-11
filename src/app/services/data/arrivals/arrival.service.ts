@@ -6,11 +6,11 @@ import { Injectable } from "@angular/core";
 export class ArrivalService {
   arrival: any;
 
-  setArrivalSchema(arrival) {
+  setArrival(arrival) {
     this.arrival = arrival;
   }
 
-  getArrivalSchema() {
+  getArrival() {
     return this.arrival;
   }
 }

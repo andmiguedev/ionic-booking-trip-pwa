@@ -6,11 +6,11 @@ import { Injectable } from "@angular/core";
 export class DepartureService {
   departure: any;
 
-  setDepartureSchema(departure) {
+  setDeparture(departure) {
     this.departure = departure;
   }
 
-  getDepartureSchema() {
+  getDeparture() {
     return this.departure;
   }
 }
