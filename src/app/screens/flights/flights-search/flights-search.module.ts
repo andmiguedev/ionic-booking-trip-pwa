@@ -4,12 +4,12 @@ import { FormsModule } from "@angular/forms";
 import { Routes, RouterModule } from "@angular/router";
 
 import { IonicModule } from "@ionic/angular";
-import { SearchFlightsPage } from "./search-flights.page";
+import { FlightsSearchPage } from "./flights-search.page";
 
 const routes: Routes = [
   {
     path: "",
-    component: SearchFlightsPage,
+    component: FlightsSearchPage,
   },
 ];
 
@@ -20,6 +20,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes),
   ],
-  declarations: [SearchFlightsPage],
+  declarations: [FlightsSearchPage],
 })
-export class SearchFlightsPageModule {}
+export class FlightsSearchPageModule {}

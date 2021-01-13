@@ -6,12 +6,12 @@ import { Routes, RouterModule } from "@angular/router";
 import { IonicModule } from "@ionic/angular";
 import { TooltipModule } from "ng2-tooltip-directive";
 
-import { DepartingResultsPage } from "./departing-results.page";
+import { FlightsDepartingPage } from "./flights-departing.page";
 
 const routes: Routes = [
   {
     path: "",
-    component: DepartingResultsPage,
+    component: FlightsDepartingPage,
   },
 ];
 
@@ -23,6 +23,6 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     TooltipModule,
   ],
-  declarations: [DepartingResultsPage],
+  declarations: [FlightsDepartingPage],
 })
-export class DepartingResultsPageModule {}
+export class FlightsDepartingPageModule {}

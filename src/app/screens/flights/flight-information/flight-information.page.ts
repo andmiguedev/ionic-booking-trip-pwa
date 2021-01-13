@@ -1,8 +1,8 @@
 import { Component } from "@angular/core";
 
-import { DepartureService } from "./../../services/data/departures/departure.service";
-import { ArrivalService } from "./../../services/data/arrivals/arrival.service";
-import { ItinerariesService } from "./../../services/data/itineraries/itineraries.service";
+import { DepartureService } from "./../../../services/data/departures/departure.service";
+import { ArrivalService } from "./../../../services/data/arrivals/arrival.service";
+import { ItinerariesService } from "./../../../services/data/itineraries/itineraries.service";
 
 @Component({
   selector: "app-flight-information",

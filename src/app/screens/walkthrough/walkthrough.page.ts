@@ -48,10 +48,10 @@ export class WalkthroughPage {
   }
 
   openFlightSearch() {
-    this.navController.navigateForward("/search-flights");
+    this.navController.navigateForward("/flights/flights-search");
   }
 
   openLoginPage() {
-    this.navController.navigateForward("/login");
+    this.navController.navigateForward("/public/login");
   }
 }

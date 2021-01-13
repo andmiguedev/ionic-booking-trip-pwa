@@ -5,14 +5,14 @@ import {
   LoadingController,
 } from "@ionic/angular";
 
-import { PickLocationPage } from "../shared/pick-location/pick-location.page";
+import { PickLocationPage } from "../../shared/pick-location/pick-location.page";
 
 @Component({
-  selector: "app-search-flights",
-  templateUrl: "./search-flights.page.html",
-  styleUrls: ["./search-flights.page.scss"],
+  selector: "app-flights-search",
+  templateUrl: "./flights-search.page.html",
+  styleUrls: ["./flights-search.page.scss"],
 })
-export class SearchFlightsPage implements OnInit {
+export class FlightsSearchPage implements OnInit {
   public oneWayTicket: any = false;
   public layoverTicket: any = false;
 
@@ -52,7 +52,7 @@ export class SearchFlightsPage implements OnInit {
     });
     loader.present();
     loader.onWillDismiss().then(() => {
-      this.navController.navigateForward("/departing-results");
+      this.navController.navigateForward("/flights/flights-departing");
     });
   }
 }

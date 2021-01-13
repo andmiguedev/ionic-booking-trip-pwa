@@ -89,6 +89,6 @@ export class LoginPage implements OnInit {
   }
 
   openRegisterPage() {
-    this.navController.navigateForward("/register");
+    this.navController.navigateForward("/public/register");
   }
 }

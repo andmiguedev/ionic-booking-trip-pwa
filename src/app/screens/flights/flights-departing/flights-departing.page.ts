@@ -1,14 +1,14 @@
 import { Component } from "@angular/core";
 import { NavController, LoadingController } from "@ionic/angular";
 
-import { ItinerariesService } from "./../../services/data/itineraries/itineraries.service";
+import { ItinerariesService } from "./../../../services/data/itineraries/itineraries.service";
 
 @Component({
-  selector: "app-departing-results",
-  templateUrl: "./departing-results.page.html",
-  styleUrls: ["./departing-results.page.scss"],
+  selector: "app-flights-departing",
+  templateUrl: "./flights-departing.page.html",
+  styleUrls: ["./flights-departing.page.scss"],
 })
-export class DepartingResultsPage {
+export class FlightsDepartingPage {
   public departureResults: any;
 
   constructor(
@@ -20,7 +20,7 @@ export class DepartingResultsPage {
   }
 
   seeReturningFlights() {
-    this.navController.navigateForward("/returning-results");
+    this.navController.navigateForward("/flights/flights-returning");
   }
 
   async seeFlightInfo() {
@@ -29,6 +29,6 @@ export class DepartingResultsPage {
     });
 
     loader.present();
-    this.navController.navigateForward("/flight-information");
+    this.navController.navigateForward("/flights/flight-information");
   }
 }

@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { NavController, LoadingController } from "@ionic/angular";
-import { PromotionsService } from "./../../services/data/promotions/promotions.service";
+import { PromotionsService } from "./../../../services/data/promotions/promotions.service";
 
 @Component({
   selector: "app-deals",
@@ -25,7 +25,7 @@ export class DealsPage {
 
     loader.present();
     loader.onWillDismiss().then(() => {
-      this.navController.navigateForward("search-flights");
+      this.navController.navigateForward("flights/flights-search");
     });
   }
 }

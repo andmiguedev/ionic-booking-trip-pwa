@@ -49,6 +49,6 @@ export class RegisterPage implements OnInit {
   }
 
   openLoginPage() {
-    this.navController.navigateRoot("/login");
+    this.navController.navigateRoot("/public/login");
   }
 }
