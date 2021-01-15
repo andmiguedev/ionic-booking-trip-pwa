@@ -26,6 +26,18 @@ const routes: Routes = [
   },
   {
     path: "",
+    redirectTo: "/checkout",
+    pathMatch: "full",
+  },
+  {
+    path: "checkout",
+    loadChildren: () =>
+      import("./screens/checkout/checkout.module").then(
+        (m) => m.CheckoutModule
+      ),
+  },
+  {
+    path: "",
     redirectTo: "/shared",
     pathMatch: "full",
   },

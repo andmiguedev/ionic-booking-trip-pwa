@@ -147,9 +147,20 @@
     </ion-card-content>
   </ion-card>
 
+  <ion-card color="success" class="ion-text-center">
+    <ion-card-content>
+      <h2 class="text-white">Estimated total:</h2>
+      <h1 class="text-white fw-500">
+        {{ outgoingFlight.ticketPrice + returningFlight.ticketPrice |
+        currency:'USD':'symbol':'2.2' }}
+      </h1>
+    </ion-card-content>
+  </ion-card>
+
   <ion-row>
     <ion-col size="12">
       <ion-button
+        (click)="openFlightCheckout()"
         class="ion-no-margin"
         size="large"
         expand="block"

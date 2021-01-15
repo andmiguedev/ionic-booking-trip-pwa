@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { NavController } from "@ionic/angular";
 
 import { DepartureService } from "./../../../services/data/departures/departure.service";
 import { ArrivalService } from "./../../../services/data/arrivals/arrival.service";
@@ -15,7 +16,8 @@ export class FlightInformationPage {
   constructor(
     private departureService: DepartureService,
     private arrivalService: ArrivalService,
-    private itineraryService: ItinerariesService
+    private itineraryService: ItinerariesService,
+    private navController: NavController
   ) {
     this.outgoingFlight =
       this.departureService.getDeparture() ||
@@ -23,5 +25,9 @@ export class FlightInformationPage {
     this.returningFlight =
       this.arrivalService.getArrival() ||
       this.itineraryService.getAllItineraries()[1];
+  }
+
+  openFlightCheckout() {
+    this.navController.navigateForward("/checkout/flight-checkout");
   }
 }
