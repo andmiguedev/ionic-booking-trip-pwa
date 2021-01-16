@@ -52,6 +52,6 @@ export class WalkthroughPage {
   }
 
   openLoginPage() {
-    this.navController.navigateForward("/public/login");
+    this.navController.navigateForward("/public/register");
   }
 }

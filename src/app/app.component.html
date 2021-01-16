@@ -1,19 +1,19 @@
 <ion-app>
   <ion-split-pane contentId="sideMenuContent">
     <ion-menu contentId="sideMenuContent" type="overlay">
-      <ion-header>
-        <div class="customer-info">
-          <ion-menu-toggle auto-hide="false">
-            <div class="avatar-img">
-              <img src="../assets/images/logo/alt-logo.png" />
-            </div>
-            <h2 class="text-8 fw-500">Customer Name</h2>
-            <p class="text-white">Last seen: today at 3:40 pm</p>
-          </ion-menu-toggle>
-        </div>
-      </ion-header>
-      <!-- -->
-      <ion-content class="bg-color">
+      <ion-content class="bg-color animated fadeIn">
+        <ion-card-content class="wrapper-customer">
+          <div class="passenger-info">
+            <img
+              class="passenger-avatar"
+              src="../assets/images/logo/alt-logo.png"
+            />
+            <h3 class="passenger-name">Customer Name</h3>
+            <p class="passenger-contact">
+              <a href="mailto:passenger@gmail.com">passenger@gmail.com </a>
+            </p>
+          </div>
+        </ion-card-content>
         <ion-list>
           <ion-menu-toggle
             auto-hide="false"

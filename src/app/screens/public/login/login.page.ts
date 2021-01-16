@@ -8,6 +8,8 @@ import {
   NavController,
 } from "@ionic/angular";
 
+import { ValidatorService } from "./../../../services/form/validator/validator.service";
+
 @Component({
   selector: "app-login",
   templateUrl: "./login.page.html",
@@ -37,8 +39,8 @@ export class LoginPage implements OnInit {
 
   validateFormFields() {
     this.loginForm = this.formBuilder.group({
-      email: ["", Validators.required],
-      password: ["", Validators.required],
+      email: ["", Validators.required, ValidatorService.validateEmail],
+      password: ["", Validators.required, ValidatorService.validatePassword],
     });
   }
 

@@ -21,12 +21,7 @@
           formControlName="name"
         ></ion-input>
       </ion-item>
-      <p
-        class="text-10"
-        *ngIf="registerForm.get('name').touched && registerForm.get('name').hasError('required')"
-      >
-        <ion-text color="danger"> Check your Name make sure is valid </ion-text>
-      </p>
+      <error-message [fieldName]="registerForm.get('name')"></error-message>
       <ion-item class="ion-no-padding animated fadeInUp">
         <ion-label position="floating" color="light">
           <ion-icon name="mail" item-start color="secondary"></ion-icon>
@@ -38,14 +33,7 @@
           formControlName="email"
         ></ion-input>
       </ion-item>
-      <p
-        class="text-10"
-        *ngIf="registerForm.get('email').touched && registerForm.get('email').hasError('required')"
-      >
-        <ion-text color="danger">
-          Check your Email make sure is valid
-        </ion-text>
-      </p>
+      <error-message [fieldName]="registerForm.get('email')"></error-message>
       <ion-item class="ion-no-padding animated fadeInUp">
         <ion-label position="floating" color="light">
           <ion-icon name="lock-closed" item-start color="secondary"></ion-icon>
@@ -57,14 +45,7 @@
           formControlName="password"
         ></ion-input>
       </ion-item>
-      <p
-        class="text-10"
-        *ngIf="registerForm.get('password').touched && registerForm.get('password').hasError('required')"
-      >
-        <ion-text color="danger">
-          Check your Password make sure is valid
-        </ion-text>
-      </p>
+      <error-message [fieldName]="registerForm.get('password')"></error-message>
       <ion-item class="ion-no-padding animated fadeInUp">
         <ion-label position="floating" color="light">
           <ion-icon
@@ -80,24 +61,19 @@
           formControlName="phone"
         ></ion-input>
       </ion-item>
-      <p
-        class="text-10"
-        *ngIf="registerForm.get('phone').touched && registerForm.get('phone').hasError('required')"
-      >
-        <ion-text color="danger">
-          Check your Phone make sure is valid
-        </ion-text>
-      </p>
+      <error-message [fieldName]="registerForm.get('phone')"></error-message>
     </form>
 
     <div class="ion-margin-top">
       <ion-button
         icon-left
+        type="submit"
         size="medium"
         expand="full"
         shape="round"
         color="secondary"
         tappable
+        [disabled]="!registerForm.valid"
       >
         Sign Up
       </ion-button>

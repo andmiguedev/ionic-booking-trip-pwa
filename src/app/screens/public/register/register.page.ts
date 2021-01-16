@@ -1,5 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+
+import { ValidatorService } from "./../../../services/form/validator/validator.service";
+
 import {
   MenuController,
   NavController,
@@ -33,14 +36,20 @@ export class RegisterPage implements OnInit {
 
   validateFormFields() {
     this.registerForm = this.formBuilder.group({
-      name: ["", Validators.required],
-      email: ["", Validators.required],
-      password: ["", Validators.required],
-      phone: ["", Validators.required],
+      name: ["", [Validators.required, ValidatorService.validatePersonName]],
+      email: ["", [Validators.required, ValidatorService.validateEmail]],
+      password: ["", [Validators.required, ValidatorService.validatePassword]],
+      phone: ["", [Validators.required, ValidatorService.validatePhone]],
     });
+
+    console.log(this.registerForm);
   }
 
   async finishRegistration() {
+    //console.log(`
+    //  Full Name: ${this.registerForm.value.name}
+    //  Email: ${this.registerForm.value.email}`);
+
     const loader = await this.loadingController.create({
       duration: 2000,
     });

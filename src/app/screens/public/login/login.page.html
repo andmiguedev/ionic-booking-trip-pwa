@@ -26,13 +26,7 @@
           formControlName="email"
         ></ion-input>
       </ion-item>
-      <!-- Validate for Email address -->
-      <p
-        class="text-10"
-        *ngIf="loginForm.get('email').touched && loginForm.get('email').hasError('required')"
-      >
-        <ion-text color="danger"> Check your Email and try again </ion-text>
-      </p>
+      <error-message [fieldName]="loginForm.get('email')"></error-message>
       <ion-item class="ion-no-padding animated fadeInUp">
         <ion-label position="floating" color="light">
           <ion-icon name="lock-closed" item-start color="secondary"></ion-icon>
@@ -44,12 +38,7 @@
           formControlName="password"
         ></ion-input>
       </ion-item>
-      <p
-        class="text-10"
-        *ngIf="loginForm.get('password').touched && loginForm.get('password').hasError('required')"
-      >
-        <ion-text color="danger"> Check your Password and try again </ion-text>
-      </p>
+      <error-message [fieldName]="loginForm.get('password')"></error-message>
     </form>
 
     <p
