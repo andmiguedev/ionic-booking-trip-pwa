@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { RouteReuseStrategy } from "@angular/router";
+import { HttpClientModule } from "@angular/common/http";
 
 import { IonicModule, IonicRouteStrategy } from "@ionic/angular";
 import { IonicStorageModule } from "@ionic/storage";
@@ -10,7 +11,6 @@ import { SplashScreen } from "@ionic-native/splash-screen/ngx";
 import { StatusBar } from "@ionic-native/status-bar/ngx";
 
 import { AppComponent } from "./app.component";
-import { TooltipsModule } from "ionic4-tooltips";
 import { AppRoutingModule } from "./app-routing.module";
 
 @NgModule({
@@ -19,10 +19,10 @@ import { AppRoutingModule } from "./app-routing.module";
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     IonicModule.forRoot(),
     IonicStorageModule.forRoot(),
     AppRoutingModule,
-    TooltipsModule.forRoot(),
   ],
   providers: [
     StatusBar,

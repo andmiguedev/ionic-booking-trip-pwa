@@ -27,7 +27,6 @@
     "@ionic/storage": "^2.3.1",
     "cordova-plugin-splashscreen": "^5.0.2",
     "cordova-sqlite-storage": "^5.1.0",
-    "ionic4-tooltips": "^2.0.2",
     "ionicons": "^5.3.0",
     "ng2-tooltip-directive": "^2.9.22",
     "rxjs": "~6.5.5",

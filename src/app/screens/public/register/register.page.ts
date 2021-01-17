@@ -1,7 +1,10 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { first } from "rxjs/operators";
 
 import { ValidatorService } from "./../../../services/form/validator/validator.service";
+import { AccountService } from "../../../services/storage/account/account.service";
 
 import {
   MenuController,
@@ -16,12 +19,15 @@ import {
 })
 export class RegisterPage implements OnInit {
   public registerForm: FormGroup;
+  formSubmitted = false;
 
   constructor(
     private menuController: MenuController,
     private formBuilder: FormBuilder,
     private loadingController: LoadingController,
-    private navController: NavController
+    private navController: NavController,
+    private accountService: AccountService,
+    private router: Router
   ) {}
 
   // Prevents User from sliding in mobile Menu
@@ -42,7 +48,7 @@ export class RegisterPage implements OnInit {
       phone: ["", [Validators.required, ValidatorService.validatePhone]],
     });
 
-    console.log(this.registerForm);
+    // console.log(this.registerForm);
   }
 
   async finishRegistration() {
@@ -50,11 +56,26 @@ export class RegisterPage implements OnInit {
     //  Full Name: ${this.registerForm.value.name}
     //  Email: ${this.registerForm.value.email}`);
 
-    const loader = await this.loadingController.create({
-      duration: 2000,
-    });
+    // User has completed all fields
+    if (this.registerForm.valid) {
+      this.formSubmitted = true;
 
-    loader.present();
+      this.accountService
+        .registerAccount(this.registerForm.value)
+        .pipe(first())
+        .subscribe({
+          next: () => {
+            this.navController.navigateForward("/public/login");
+          },
+        });
+
+      const loader = await this.loadingController.create({
+        duration: 2000,
+      });
+
+      loader.present();
+    }
+    return;
   }
 
   openLoginPage() {

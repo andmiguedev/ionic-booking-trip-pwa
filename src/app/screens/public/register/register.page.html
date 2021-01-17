@@ -8,7 +8,11 @@
       </h4>
     </div>
 
-    <form class="field-forms" [formGroup]="registerForm">
+    <form
+      class="field-forms"
+      [formGroup]="registerForm"
+      (ngSubmit)="finishRegistration()"
+    >
       <ion-item class="ion-no-padding animated fadeInUp">
         <ion-label position="floating" color="light">
           <ion-icon name="person" item-start color="secondary"></ion-icon>
@@ -66,6 +70,7 @@
 
     <div class="ion-margin-top">
       <ion-button
+        (click)="finishRegistration()"
         icon-left
         type="submit"
         size="medium"

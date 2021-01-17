@@ -1,5 +1,5 @@
 export class ValidatorService {
-  static invalidErrorMessages(fieldName: string) {
+  static invalidErrorMessages(formField: string) {
     let invalidFields = {
       required: "Field name cannot be empty",
       invalidFullName: "Check your Name and make sure is valid",
@@ -8,21 +8,21 @@ export class ValidatorService {
       invalidPhone: "Check your Phone and make sure is valid",
     };
 
-    return invalidFields[fieldName];
+    return invalidFields[formField];
   }
 
-  static validatePersonName(control) {
+  static validatePersonName(fieldName) {
     // Names can contain apostrophes and when applicable hiphen
-    if (control.value.match(/^[a-zA-Z]+ [a-zA-Z]+$/)) {
+    if (fieldName.value.match(/^[a-zA-Z]+ [a-zA-Z]+$/)) {
       return null;
     }
 
     return { invalidFullName: true };
   }
 
-  static validateEmail(control) {
+  static validateEmail(fieldName) {
     if (
-      control.value.match(
+      fieldName.value.match(
         /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$/
       )
     ) {
@@ -32,9 +32,9 @@ export class ValidatorService {
     return { invalidEmail: true };
   }
 
-  static validatePassword(control) {
+  static validatePassword(fieldName) {
     if (
-      control.value.match(
+      fieldName.value.match(
         /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/
       )
     ) {
@@ -44,8 +44,10 @@ export class ValidatorService {
     return { invalidPassword: true };
   }
 
-  static validatePhone(control) {
-    if (control.value.match(/^(\([0-9]{3}\) |[0-9]{3}-)|[0-9]{3} [0-9]{4}$/)) {
+  static validatePhone(fieldName) {
+    if (
+      fieldName.value.match(/^(\([0-9]{3}\) |[0-9]{3}-)|[0-9]{3} [0-9]{4}$/)
+    ) {
       return null;
     }
 
