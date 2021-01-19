@@ -1,0 +1,38 @@
+:host {
+  ion-content {
+    --background: var(--ion-color-light);
+
+    .booking-container {
+      &::before {
+        content: "";
+        width: 100%;
+        display: block;
+        padding-top: 5rem;
+        background: linear-gradient(
+          135deg,
+          var(--ion-color-dark),
+          var(--ion-color-primary),
+          var(--ion-color-tertiary)
+        );
+        background-repeat: repeat-x;
+      }
+
+      .booking-wrapper {
+        margin-top: -4rem;
+      }
+    }
+
+    ion-item {
+      --border-style: dotted;
+      --border-radius: 4px;
+    }
+  }
+}
+
+.sailing {
+  transform: rotate(350deg);
+}
+
+.returning {
+  transform: rotate(10deg);
+}

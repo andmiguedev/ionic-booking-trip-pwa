@@ -26,6 +26,16 @@ const routes: Routes = [
   },
   {
     path: "",
+    redirectTo: "/cruises",
+    pathMatch: "full",
+  },
+  {
+    path: "cruises",
+    loadChildren: () =>
+      import("./screens/cruises/cruises.module").then((m) => m.CruisesModule),
+  },
+  {
+    path: "",
     redirectTo: "/checkout",
     pathMatch: "full",
   },
