@@ -5,7 +5,6 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { Routes, RouterModule } from "@angular/router";
 import { IonicModule } from "@ionic/angular";
 
-import { DisplayErrorComponent } from './../../../components/display-error/display-error';
 import { LoginPage } from "./login.page";
 
 const routes: Routes = [
@@ -23,6 +22,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes),
   ],
-  declarations: [DisplayErrorComponent, LoginPage],
+  declarations: [LoginPage],
 })
 export class LoginPageModule {}

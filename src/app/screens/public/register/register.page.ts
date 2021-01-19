@@ -19,7 +19,6 @@ import {
 })
 export class RegisterPage implements OnInit {
   public registerForm: FormGroup;
-  formSubmitted = false;
 
   constructor(
     private menuController: MenuController,
@@ -42,7 +41,10 @@ export class RegisterPage implements OnInit {
 
   validateFormFields() {
     this.registerForm = this.formBuilder.group({
-      name: ["", [Validators.required, ValidatorService.validatePersonName]],
+      fullName: [
+        "",
+        [Validators.required, ValidatorService.validatePersonName],
+      ],
       email: ["", [Validators.required, ValidatorService.validateEmail]],
       password: ["", [Validators.required, ValidatorService.validatePassword]],
       phone: ["", [Validators.required, ValidatorService.validatePhone]],
@@ -52,30 +54,20 @@ export class RegisterPage implements OnInit {
   }
 
   async finishRegistration() {
-    //console.log(`
-    //  Full Name: ${this.registerForm.value.name}
-    //  Email: ${this.registerForm.value.email}`);
-
-    // User has completed all fields
-    if (this.registerForm.valid) {
-      this.formSubmitted = true;
-
-      this.accountService
-        .registerAccount(this.registerForm.value)
-        .pipe(first())
-        .subscribe({
-          next: () => {
-            this.navController.navigateForward("/public/login");
-          },
-        });
-
-      const loader = await this.loadingController.create({
-        duration: 2000,
+    this.accountService
+      .register(this.registerForm.value)
+      .pipe(first())
+      .subscribe({
+        next: () => {
+          this.router.navigate(["/public/login"]);
+        },
       });
 
-      loader.present();
-    }
-    return;
+    const loader = await this.loadingController.create({
+      duration: 2000,
+    });
+
+    loader.present();
   }
 
   openLoginPage() {

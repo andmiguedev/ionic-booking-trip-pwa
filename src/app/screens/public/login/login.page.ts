@@ -1,5 +1,8 @@
 import { Component, OnInit } from "@angular/core";
+import { Router, ActivatedRoute } from "@angular/router";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { first } from "rxjs/operators";
+
 import {
   MenuController,
   AlertController,
@@ -9,6 +12,7 @@ import {
 } from "@ionic/angular";
 
 import { ValidatorService } from "./../../../services/form/validator/validator.service";
+import { AccountService } from "../../../services/storage/account/account.service";
 
 @Component({
   selector: "app-login",
@@ -24,6 +28,9 @@ export class LoginPage implements OnInit {
     private loadingController: LoadingController,
     private toastController: ToastController,
     private formBuilder: FormBuilder,
+    private accountService: AccountService,
+    private route: ActivatedRoute,
+    private router: Router,
     private navController: NavController
   ) {}
 
@@ -88,6 +95,18 @@ export class LoginPage implements OnInit {
     });
 
     await alert.present();
+  }
+
+  loginAccountUser() {
+    this.accountService.storeSessionStorage(
+      this.loginForm.controls.email.value,
+      this.loginForm.controls.password.value.pipe(first()).subscribe({
+        next: () => {
+          const returnUrl = this.route.snapshot.queryParams["returnUrl"] || "/";
+          this.router.navigateByUrl(returnUrl);
+        },
+      })
+    );
   }
 
   openRegisterPage() {

@@ -47,11 +47,11 @@ export class WalkthroughPage {
     this.slides.slideNext(1000, false);
   }
 
-  openFlightSearch() {
-    this.navController.navigateForward("/flights/flights-search");
+  openSignupPage() {
+    this.navController.navigateForward("/public/register");
   }
 
-  openLoginPage() {
-    this.navController.navigateForward("/public/register");
+  openMainPage() {
+    this.navController.navigateForward("/shared/deals");
   }
 }
