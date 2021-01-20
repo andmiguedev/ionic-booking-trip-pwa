@@ -5,6 +5,7 @@ import {
   LoadingController,
 } from "@ionic/angular";
 
+import { Storage } from "@ionic/storage";
 import { PickLocationPage } from "../../shared/pick-location/pick-location.page";
 
 @Component({
@@ -17,28 +18,56 @@ export class FlightsSearchPage implements OnInit {
   public layoverTicket: any = false;
 
   // Schema for one way trip
-  public sampleLocation: any = {
-    recent: "Miami, United States",
-    departure: "Same as departure",
+  public searchLocation: any = {
+    departure: "Fort Lauderdale, United States",
+    layover: "Stop Location",
+    arrival: "Any Location",
     origin: new Date().toISOString(),
     stop: new Date().toISOString(),
     destination: new Date().toISOString(),
   };
 
   constructor(
+    private storage: Storage,
     private modalController: ModalController,
     private navController: NavController,
     private loadingController: LoadingController
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getTravelLocation();
+  }
+
+  getTravelLocation() {
+    this.storage
+      .get("departure")
+      .then((pickedValue) => {
+        if (pickedValue !== null) {
+          this.searchLocation.departure = pickedValue;
+        }
+      })
+      .catch((notifyError) => {
+        console.error(notifyError);
+      });
+
+    this.storage
+      .get("arrival")
+      .then((pickedValue) => {
+        if (pickedValue !== null) {
+          this.searchLocation.arrival = pickedValue;
+        }
+      })
+      .catch((notifyError) => {
+        console.error(notifyError);
+      });
+  }
 
   async chooseLocation(place: string) {
     const modal = await this.modalController.create({
       component: PickLocationPage,
       componentProps: {
-        place,
-        search: this.sampleLocation,
+        place: place,
+        searchLocation: this.searchLocation,
       },
     });
 

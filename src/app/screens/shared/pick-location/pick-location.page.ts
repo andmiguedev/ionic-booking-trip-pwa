@@ -8,63 +8,63 @@ import { Storage } from "@ionic/storage";
   styleUrls: ["./pick-location.page.scss"],
 })
 export class PickLocationPage implements OnInit {
-  searchTerms: string = "";
-  searchResults: any;
-
   // Type assertion not defined
-  @Input() origin: any;
-  @Input() sampleLocation: any;
+  @Input() place: any;
+  @Input() searchLocation: any;
 
   locations: any = {
     placesList: [
       {
-        assignId: 1,
+        id: 1,
         name: "Current location",
       },
       {
-        assignId: 2,
+        id: 2,
         name: "San Juan, Puerto Rico",
       },
       {
-        assignId: 3,
+        id: 3,
         name: "Buenos Aires, Argentina",
       },
       {
-        assignId: 4,
+        id: 4,
         name: "Rome, Italy",
       },
       {
-        assignId: 5,
+        id: 5,
         name: "Miami, United States",
       },
       {
-        assignId: 6,
+        id: 6,
         name: "New York, United States",
       },
       {
-        assignId: 7,
+        id: 7,
         name: "Paris, France",
       },
       {
-        assignId: 8,
+        id: 8,
         name: "Munich, Germany",
       },
       {
-        assignId: 9,
+        id: 9,
         name: "Manchester, United Kingdom",
       },
       {
-        assignId: 10,
+        id: 10,
         name: "Madrid, Span",
       },
     ],
     recent: [
       {
-        assignId: 1,
-        name: "Miami, United States",
+        id: 1,
+        name: "Fort Lauderdale, United States",
       },
     ],
   };
+
+  // searchTerm: string = "";
+  searchResults: any;
 
   constructor(
     private storage: Storage,
@@ -72,7 +72,7 @@ export class PickLocationPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    // console.log(this.selectedPlace);
+    console.log(this.place);
     this.searchResults = this.locations.placesList;
     // console.log(this.searchResults);
   }
@@ -93,15 +93,15 @@ export class PickLocationPage implements OnInit {
     }
   }
 
-  pickLocation(place) {
-    if (this.origin === "origin") {
-      this.storage.set("recent", place.name);
-      this.sampleLocation.pickup = place.name;
+  pickLocation(city) {
+    if (this.place === "origin") {
+      this.storage.set("departure", city.name);
+      this.searchLocation.departure = city.name;
     }
 
-    if (this.origin === "destination") {
-      this.storage.set("departure", place.name);
-      this.sampleLocation.pickup = place.name;
+    if (this.place === "destination") {
+      this.storage.set("arrival", city.name);
+      this.searchLocation.arrival = city.name;
     }
 
     this.modalController.dismiss();

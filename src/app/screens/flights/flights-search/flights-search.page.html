@@ -24,7 +24,9 @@
                 <ion-text color="tertiary">Origin</ion-text>
               </p>
               <h2 class="fw-700">
-                <ion-text color="primary"> Departure Location </ion-text>
+                <ion-text color="primary"
+                  >{{ searchLocation.departure }}</ion-text
+                >
               </h2>
             </ion-label>
           </ion-item>
@@ -45,7 +47,9 @@
                 <ion-text color="tertiary">Layover</ion-text>
               </p>
               <h2 class="fw-700">
-                <ion-text color="primary"> Stop Location </ion-text>
+                <ion-text color="primary"
+                  >{{ searchLocation.layover }}</ion-text
+                >
               </h2>
             </ion-label>
           </ion-item>
@@ -64,10 +68,12 @@
             ></ion-icon>
             <ion-label>
               <p>
-                <ion-text color="tertiary">Destination </ion-text>
+                <ion-text color="tertiary">Destination</ion-text>
               </p>
               <h2 class="fw-700">
-                <ion-text color="primary"> Arrival Location </ion-text>
+                <ion-text color="primary"
+                  >{{ searchLocation.arrival }}</ion-text
+                >
               </h2>
             </ion-label>
           </ion-item>
@@ -112,15 +118,15 @@
                 <ion-label>
                   <h2 class="fw-700">
                     <ion-text color="primary" class="text-10">
-                      &nbsp;Select departure date
+                      &nbsp;&nbsp;Departure date
                     </ion-text>
                   </h2>
                 </ion-label>
                 <ion-datetime
                   class="fw-700"
                   color="primary"
-                  displayFormat="MMMM D YYYY"
-                  pickerFormat="MMMM/D/ h:mm A"
+                  displayFormat="MMM D, YYYY"
+                  pickerFormat="MMMM/DD/YYYY"
                 >
                 </ion-datetime>
               </ion-item>
@@ -133,22 +139,22 @@
                 <ion-icon
                   class="ion-no-margin"
                   size="small"
-                  name="calendar"
+                  name="calendar-clear"
                   color="primary"
                   slot="start"
                 ></ion-icon>
                 <ion-label>
                   <h2 class="fw-700">
                     <ion-text color="primary" class="text-10">
-                      &nbsp;Select returning date
+                      &nbsp;&nbsp;Returning date
                     </ion-text>
                   </h2>
                 </ion-label>
                 <ion-datetime
                   color="primary"
                   class="fw-700"
-                  displayFormat="MMMM D YYYY"
-                  pickerFormat="MMMM/D/ h:mm A"
+                  displayFormat="MMM D, YYYY"
+                  pickerFormat="MMMM/DD/YYYY"
                 >
                 </ion-datetime>
               </ion-item>
@@ -268,7 +274,7 @@
         expand="full"
       >
         <ion-icon name="search" slot="start"></ion-icon>
-        Look itinerary
+        Search Itinerary
       </ion-button>
     </ion-card>
   </div>

@@ -26,21 +26,21 @@
 
 <ion-content class="animated fadeIn" tappable>
   <ion-item
-    (click)="pickLocation('place')"
-    *ngFor="let place of locations.recent"
+    (click)="pickLocation(city)"
+    *ngFor="let city of locations.recent"
     color="tertiary"
     tappable
   >
     <ion-icon name="locate" color="light" slot="start"></ion-icon>
-    <ion-text color="dark"><strong>{{ place.name }}</strong></ion-text>
+    <ion-text color="dark"><strong>{{ city.name }}</strong></ion-text>
   </ion-item>
   <ion-item
-    *ngFor="let place of searchResults"
+    *ngFor="let city of searchResults"
     class="bg-light"
     tappable
-    (click)="pickLocation(place)"
+    (click)="pickLocation(city)"
   >
     <ion-icon name="time" color="dark" slot="start"></ion-icon>
-    <ion-text color="primary">{{ place.name }}</ion-text>
+    <ion-text color="primary">{{ city.name }}</ion-text>
   </ion-item>
 </ion-content>
