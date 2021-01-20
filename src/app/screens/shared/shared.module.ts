@@ -2,17 +2,17 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { SharedRoutingModule } from "./shared-routing.module";
 
-import { DealsPage } from "./deals/deals.page";
+import { IncentivesPage } from "./incentives/incentives.page";
 import { PickLocationPage } from "./pick-location/pick-location.page";
 
-import { DealsPageModule } from "./deals/deals.module";
+import { IncentivesPageModule } from "./incentives/incentives.module";
 import { PickLocationPageModule } from "./pick-location/pick-location.module";
 
 @NgModule({
-  declarations: [DealsPage, PickLocationPage],
+  declarations: [IncentivesPage, PickLocationPage],
   imports: [
     CommonModule,
-    DealsPageModule,
+    IncentivesPageModule,
     PickLocationPageModule,
     SharedRoutingModule,
   ],

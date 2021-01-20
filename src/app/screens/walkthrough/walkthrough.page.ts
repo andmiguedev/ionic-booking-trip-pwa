@@ -52,6 +52,6 @@ export class WalkthroughPage {
   }
 
   openMainPage() {
-    this.navController.navigateForward("/shared/deals");
+    this.navController.navigateForward("/shared/incentives");
   }
 }

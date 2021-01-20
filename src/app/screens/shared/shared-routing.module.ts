@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 
-import { DealsPage } from "./deals/deals.page";
+import { IncentivesPage } from "./incentives/incentives.page";
 import { PickLocationPage } from "./pick-location/pick-location.page";
 
 const routes: Routes = [
@@ -9,8 +9,8 @@ const routes: Routes = [
     path: "",
     children: [
       {
-        path: "deals",
-        component: DealsPage,
+        path: "incentives",
+        component: IncentivesPage,
       },
       {
         path: "pick-location",

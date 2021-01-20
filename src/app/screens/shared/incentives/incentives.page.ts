@@ -1,25 +1,27 @@
 import { Component } from "@angular/core";
 import { NavController, LoadingController } from "@ionic/angular";
-import { PromotionsService } from "./../../../services/data/promotions/promotions.service";
+
+import { IncentiveService } from "./../../../services/data/incentive/incentive.service";
 
 @Component({
-  selector: "app-deals",
-  templateUrl: "./deals.page.html",
-  styleUrls: ["./deals.page.scss"],
+  selector: "app-incentives",
+  templateUrl: "./incentives.page.html",
+  styleUrls: ["./incentives.page.scss"],
 })
-export class DealsPage {
-  public customerDeals: any;
+export class IncentivesPage {
+  public passengerDeals: any;
 
   constructor(
-    private promotionsService: PromotionsService,
+    private incentiveService: IncentiveService,
     private loadingController: LoadingController,
     private navController: NavController
   ) {
-    this.customerDeals = this.promotionsService.getAllPromotions();
+    this.passengerDeals = this.incentiveService.getAllIncentives();
   }
 
-  async loadBookingForm() {
+  async goToFlightsSearch() {
     const loader = await this.loadingController.create({
+      message: "Loading...",
       duration: 1000,
     });
 
