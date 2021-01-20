@@ -1,8 +1,8 @@
 export let MOBILE = [
   {
-    title: "Home",
-    url: "/home",
-    current: "root",
+    title: "Discover",
+    url: "/shared/incentives",
+    current: "forward",
     icon: "home",
   },
   {

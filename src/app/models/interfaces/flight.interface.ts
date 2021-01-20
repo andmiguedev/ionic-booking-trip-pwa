@@ -1,7 +1,6 @@
 export interface Flight {
-  carrierId: number;
+  flightId?: string;
   airline: string;
-  bookingType: string;
   duration: string;
   departureTime: string;
   arrivalTime: string;
@@ -12,4 +11,5 @@ export interface Flight {
   purchaseClass: string;
   companyLogo: string;
   ticketPrice: number;
+  labelTicket?: string;
 }

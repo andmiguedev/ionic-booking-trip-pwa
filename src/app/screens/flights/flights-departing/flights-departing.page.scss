@@ -6,9 +6,10 @@
       var(--ion-color-tertiary)
     );
 
-    ion-item {
-      --border-style: dotted;
-      --border-radius: 4px;
+    ion-card {
+      ion-badge {
+        padding: 0.3em 0.7em;
+      }
     }
   }
 }

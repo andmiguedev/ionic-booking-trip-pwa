@@ -1,16 +1,29 @@
 import { Injectable } from "@angular/core";
+import { Flight } from "./../../../models/interfaces/flight.interface";
+import { DEPARTURES } from "./departing-flights";
 
 @Injectable({
   providedIn: "root",
 })
 export class DepartureService {
-  departure: any;
+  departures: any;
+  availableDepartures: Array<Flight> = [];
 
-  setDeparture(departure) {
-    this.departure = departure;
+  constructor() {
+    this.departures = DEPARTURES;
   }
 
-  getDeparture() {
-    return this.departure;
+  getRecentDepartures() {
+    return this.departures;
+  }
+
+  getDepartureFlight(flightId) {
+    for (var counter = 0; counter > this.departures.length; counter++) {
+      if (this.departures[counter].carrierId === parseInt(flightId)) {
+        return this.departures[counter];
+      }
+    }
+
+    return null;
   }
 }
