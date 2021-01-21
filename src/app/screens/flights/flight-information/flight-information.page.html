@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>Your Itinerary</ion-title>
+    <ion-title>Your Flight Itinerary</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -12,33 +12,33 @@
     <ion-card-header class="ion-no-padding">
       <ion-item lines="none" color="light">
         <ion-icon name="airplane"></ion-icon>
-        <ion-label>&nbsp;Departing </ion-label>
+        <ion-label>&nbsp;&nbsp;Departing Flight</ion-label>
       </ion-item>
     </ion-card-header>
 
     <ion-card-content class="ion-no-padding">
       <ion-item>
         <ion-thumbnail slot="start">
-          <img [src]="outgoingFlight.companyLogo" />
+          <img [src]="departingFlight.companyLogo" />
         </ion-thumbnail>
 
         <ion-label>
           <h2>
             <ion-text color="dark">
-              <strong>{{ outgoingFlight.departureTime }}</strong> -
-              <strong>{{ outgoingFlight.arrivalTime }}</strong>
+              <strong>{{ departingFlight.departureTime }}</strong> -
+              <strong>{{ departingFlight.arrivalTime }}</strong>
             </ion-text>
           </h2>
           <h3>
-            <ion-text color="tertiary">
-              {{ outgoingFlight.duration }} ({{ outgoingFlight.layover }})
+            <ion-text color="success">
+              {{ departingFlight.duration }} ({{ departingFlight.layover }})
             </ion-text>
           </h3>
           <h3>
             <ion-text color="primary">
-              <strong>{{ outgoingFlight.originCode }} &nbsp;</strong>
+              <strong>{{ departingFlight.originCode }} &nbsp;</strong>
               <ion-icon name="airplane"></ion-icon>
-              <strong> &nbsp;{{ outgoingFlight.destinationCode }}</strong>
+              <strong> &nbsp;{{ departingFlight.destinationCode }}</strong>
             </ion-text>
           </h3>
         </ion-label>
@@ -46,11 +46,11 @@
         <div slot="end">
           <ion-badge color="success">
             <h2 class="text-white fw-500">
-              {{ outgoingFlight.ticketPrice | currency:'USD':'symbol':'2.0' }}
+              {{ departingFlight.ticketPrice | currency:'USD':'symbol':'2.0' }}
             </h2>
           </ion-badge>
           <p class="text-6">
-            <ion-text color="primary"> one way </ion-text>
+            <ion-text color="secondary"> ticket price </ion-text>
           </p>
         </div>
       </ion-item>
@@ -61,7 +61,7 @@
     <ion-card-header class="ion-no-padding">
       <ion-item lines="none" color="light">
         <ion-icon name="airplane" class="return"></ion-icon>
-        <ion-label>&nbsp;Returning </ion-label>
+        <ion-label>&nbsp;&nbsp;Returning Flight </ion-label>
       </ion-item>
     </ion-card-header>
     <ion-card-content class="ion-no-padding">
@@ -78,7 +78,7 @@
             </ion-text>
           </h2>
           <h3>
-            <ion-text color="tertiary">
+            <ion-text color="success">
               {{ returningFlight.duration }} ({{ returningFlight.layover }})
             </ion-text>
           </h3>
@@ -98,7 +98,7 @@
             </h2>
           </ion-badge>
           <p class="text-6">
-            <ion-text color="primary"> one way </ion-text>
+            <ion-text color="secondary">ticket price</ion-text>
           </p>
         </div>
       </ion-item>
@@ -108,22 +108,19 @@
   <ion-card class="bg-white">
     <ion-card-header class="ion-no-padding">
       <ion-item lines="none" color="light" class="fw-700">
-        <ion-label>Flight Info</ion-label>
+        <ion-label color="primary">Departure Info</ion-label>
       </ion-item>
     </ion-card-header>
     <ion-card-content class="ion-no-padding">
       <ion-item class="ion-text-left">
         <ion-label>
-          <ion-text color="success" class="fw-500 text-7">
-            Departure flight
+          <ion-text color="secondary" class="fw-500 text-8">
+            Date of Departure:
           </ion-text>
         </ion-label>
         <h3>
-          <ion-text color="primary">
-            <strong class="text-6"
-              >{{ outgoingFlight.purchaseClass }} | {{
-              outgoingFlight.aircraft}}</strong
-            >
+          <ion-text color="dark">
+            <strong class="text-7"> 01/21/2020 </strong>
           </ion-text>
         </h3>
       </ion-item>
@@ -131,16 +128,39 @@
     <ion-card-content class="ion-no-padding">
       <ion-item class="ion-text-left">
         <ion-label>
-          <ion-text color="success" class="fw-500 text-7">
-            Returning flight
+          <ion-text color="secondary" class="fw-500 text-8"> From: </ion-text>
+        </ion-label>
+        <h3>
+          <ion-text color="dark">
+            <strong class="text-7"> Fort Lauderdale, Florida </strong>
+          </ion-text>
+        </h3>
+      </ion-item>
+    </ion-card-content>
+    <ion-card-content class="ion-no-padding">
+      <ion-item class="ion-text-left">
+        <ion-label>
+          <ion-text color="secondary" class="fw-500 text-8"> To: </ion-text>
+        </ion-label>
+        <h3>
+          <ion-text color="dark">
+            <strong class="text-7"> Atlanta, Georgia </strong>
+          </ion-text>
+        </h3>
+      </ion-item>
+    </ion-card-content>
+    <ion-card-content class="ion-no-padding">
+      <ion-item class="ion-text-left">
+        <ion-label>
+          <ion-text color="secondary" class="fw-500 text-8"
+            >Purchased Class:
           </ion-text>
         </ion-label>
         <h3>
-          <ion-text color="primary">
-            <strong class="text-6"
-              >{{ returningFlight.purchaseClass }} | {{
-              returningFlight.aircraft}}</strong
-            >
+          <ion-text color="dark">
+            <strong class="text-7">
+              {{ departingFlight.purchaseClass }}
+            </strong>
           </ion-text>
         </h3>
       </ion-item>
@@ -149,26 +169,31 @@
 
   <ion-card color="success" class="ion-text-center">
     <ion-card-content>
-      <h2 class="text-white">Estimated total:</h2>
-      <h1 class="text-white fw-500">
-        {{ outgoingFlight.ticketPrice + returningFlight.ticketPrice |
-        currency:'USD':'symbol':'2.2' }}
-      </h1>
+      <ion-item line="none">
+        <ion-label class="ion-text-left">
+          <ion-text class="fw-500">
+            <h2 class="text-white">Estimated Subtotal:</h2>
+          </ion-text>
+        </ion-label>
+        <ion-label class="ion-text-right">
+          <ion-text class="fw-500">
+            <h1 class="text-white fw-500">
+              {{ departingFlight.ticketPrice + returningFlight.ticketPrice |
+              currency:'USD':'symbol':'2.2' }}
+            </h1>
+          </ion-text>
+        </ion-label>
+      </ion-item>
     </ion-card-content>
   </ion-card>
-
-  <ion-row>
-    <ion-col size="12">
-      <ion-button
-        (click)="openFlightCheckout()"
-        class="ion-no-margin"
-        size="large"
-        expand="block"
-        color="secondary"
-      >
-        <ion-icon slot="start" name="briefcase"></ion-icon>
-        Confirm Itinerary
-      </ion-button>
-    </ion-col>
-  </ion-row>
+  <ion-button
+    (click)="openFlightCheckout()"
+    class="ion-no-margin"
+    size="large"
+    expand="block"
+    color="secondary"
+  >
+    <ion-icon slot="start" name="airplane"></ion-icon>
+    Select Itinerary
+  </ion-button>
 </ion-content>

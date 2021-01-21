@@ -1,5 +1,7 @@
 import { Component } from "@angular/core";
-import { ItinerariesService } from "./../../../services/data/itineraries/itineraries.service";
+import { LoadingController, NavController } from "@ionic/angular";
+
+import { ReturnService } from "./../../../services/data/returns/return.service";
 
 @Component({
   selector: "app-flights-returning",
@@ -7,11 +9,22 @@ import { ItinerariesService } from "./../../../services/data/itineraries/itinera
   styleUrls: ["./flights-returning.page.scss"],
 })
 export class FlightsReturningPage {
-  public arrivalResults: any;
+  public returnResults: any;
 
-  constructor(private itinerariesService: ItinerariesService) {
-    this.arrivalResults = this.itinerariesService.getAllItineraries();
+  constructor(
+    private returnService: ReturnService,
+    private loadingController: LoadingController,
+    private navController: NavController
+  ) {
+    this.returnResults = this.returnService.getRecentReturns();
   }
 
-  ngOnInit() {}
+  async seeItineraryInfo() {
+    const loader = await this.loadingController.create({
+      duration: 1000,
+    });
+
+    loader.present();
+    this.navController.navigateForward("/flights/flight-information");
+  }
 }

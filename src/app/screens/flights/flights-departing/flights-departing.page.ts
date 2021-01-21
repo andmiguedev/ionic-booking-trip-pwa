@@ -19,16 +19,7 @@ export class FlightsDepartingPage {
     this.departureResults = this.departureService.getRecentDepartures();
   }
 
-  // seeReturningFlights() {
-  //   this.navController.navigateForward("/flights/flights-returning");
-  // }
-
-  async lookReturningFlight() {
-    const loader = await this.loadingController.create({
-      duration: 1000,
-    });
-
-    loader.present();
+  lookReturningFlight() {
     this.navController.navigateForward("/flights/flights-returning");
   }
 }

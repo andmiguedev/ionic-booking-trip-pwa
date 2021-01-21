@@ -1,28 +1,28 @@
 import { Injectable } from "@angular/core";
 import { Flight } from "./../../../models/interfaces/flight.interface";
-import { DEPARTING } from "./departing-flights";
+import { RETURNING } from "./returning-flights";
 
 @Injectable({
   providedIn: "root",
 })
-export class DepartureService {
-  departures: any;
+export class ReturnService {
+  returns: any;
   selectFlight: any;
-  availableDepartures: Array<Flight> = [];
+  availableReturns: Array<Flight> = [];
 
   constructor() {
-    this.departures = DEPARTING;
+    this.returns = RETURNING;
   }
 
-  getRecentDepartures() {
-    return this.departures;
+  getRecentReturns() {
+    return this.returns;
   }
 
-  setDepartureFlight(selectFlight) {
+  setReturnFlight(selectFlight) {
     this.selectFlight = selectFlight;
   }
 
-  getDepartureFlight() {
+  getReturnFlight() {
     return this.selectFlight;
   }
 }

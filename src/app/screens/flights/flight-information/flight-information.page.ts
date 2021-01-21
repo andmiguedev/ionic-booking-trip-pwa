@@ -2,8 +2,7 @@ import { Component } from "@angular/core";
 import { NavController } from "@ionic/angular";
 
 import { DepartureService } from "./../../../services/data/departures/departure.service";
-import { ArrivalService } from "./../../../services/data/arrivals/arrival.service";
-import { ItinerariesService } from "./../../../services/data/itineraries/itineraries.service";
+import { ReturnService } from "./../../../services/data/returns/return.service";
 
 @Component({
   selector: "app-flight-information",
@@ -11,20 +10,15 @@ import { ItinerariesService } from "./../../../services/data/itineraries/itinera
   styleUrls: ["./flight-information.page.scss"],
 })
 export class FlightInformationPage {
-  public outgoingFlight: any;
+  public departingFlight: any;
   public returningFlight: any;
   constructor(
     private departureService: DepartureService,
-    private arrivalService: ArrivalService,
-    private itineraryService: ItinerariesService,
+    private returnService: ReturnService,
     private navController: NavController
   ) {
-    this.outgoingFlight =
-      this.departureService.getDeparture() ||
-      this.itineraryService.getAllItineraries()[0];
-    this.returningFlight =
-      this.arrivalService.getArrival() ||
-      this.itineraryService.getAllItineraries()[1];
+    this.departingFlight = this.departureService.getRecentDepartures()[0];
+    this.returningFlight = this.returnService.getRecentReturns()[0];
   }
 
   openFlightCheckout() {
