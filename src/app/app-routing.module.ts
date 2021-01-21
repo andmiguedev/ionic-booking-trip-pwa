@@ -36,6 +36,16 @@ const routes: Routes = [
   },
   {
     path: "",
+    redirectTo: "/profile",
+    pathMatch: "full",
+  },
+  {
+    path: "profile",
+    loadChildren: () =>
+      import("./screens/profile/profile.module").then((m) => m.ProfileModule),
+  },
+  {
+    path: "",
     redirectTo: "/checkout",
     pathMatch: "full",
   },

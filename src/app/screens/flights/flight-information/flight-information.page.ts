@@ -21,7 +21,7 @@ export class FlightInformationPage {
     this.returningFlight = this.returnService.getRecentReturns()[0];
   }
 
-  openFlightCheckout() {
-    this.navController.navigateForward("/checkout/flight-checkout");
+  openProfileInfo() {
+    this.navController.navigateForward("/profile/update-info");
   }
 }

@@ -6,20 +6,4 @@
       var(--ion-color-tertiary)
     );
   }
-
-  ion-item {
-    --border-style: dotted;
-    --border-radius: 4px;
-  }
-
-  ion-select {
-    max-width: 100%;
-  }
-
-  ion-checkbox {
-    position: absolute;
-    top: 5px;
-    right: 0;
-    --size: 13px;
-  }
 }

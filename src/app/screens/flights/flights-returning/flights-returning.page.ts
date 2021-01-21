@@ -21,6 +21,7 @@ export class FlightsReturningPage {
 
   async seeItineraryInfo() {
     const loader = await this.loadingController.create({
+      message: "Loading Itinerary...",
       duration: 1000,
     });
 

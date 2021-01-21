@@ -166,28 +166,8 @@
       </ion-item>
     </ion-card-content>
   </ion-card>
-
-  <ion-card color="success" class="ion-text-center">
-    <ion-card-content>
-      <ion-item line="none">
-        <ion-label class="ion-text-left">
-          <ion-text class="fw-500">
-            <h2 class="text-white">Estimated Subtotal:</h2>
-          </ion-text>
-        </ion-label>
-        <ion-label class="ion-text-right">
-          <ion-text class="fw-500">
-            <h1 class="text-white fw-500">
-              {{ departingFlight.ticketPrice + returningFlight.ticketPrice |
-              currency:'USD':'symbol':'2.2' }}
-            </h1>
-          </ion-text>
-        </ion-label>
-      </ion-item>
-    </ion-card-content>
-  </ion-card>
   <ion-button
-    (click)="openFlightCheckout()"
+    (click)="openProfileInfo()"
     class="ion-no-margin"
     size="large"
     expand="block"

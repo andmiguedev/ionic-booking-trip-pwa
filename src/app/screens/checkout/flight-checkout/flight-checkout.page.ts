@@ -5,6 +5,4 @@ import { Component } from "@angular/core";
   templateUrl: "./flight-checkout.page.html",
   styleUrls: ["./flight-checkout.page.scss"],
 })
-export class FlightCheckoutPage {
-  public checkoutPaymentMethod: any;
-}
+export class FlightCheckoutPage {}
