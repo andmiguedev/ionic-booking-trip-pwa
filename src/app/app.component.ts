@@ -6,7 +6,7 @@ import { SplashScreen } from "@ionic-native/splash-screen/ngx";
 import { StatusBar } from "@ionic-native/status-bar/ngx";
 
 import { AccountService } from "./services/storage/account/account.service";
-import { Account } from "./models/classes/account.class";
+import { Account } from "./models/interfaces/account.interface";
 
 @Component({
   selector: "app-root",

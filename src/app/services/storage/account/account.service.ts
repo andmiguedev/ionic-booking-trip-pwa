@@ -3,8 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
 import { map } from "rxjs/operators";
 
-// import { environment } from "../../../../environments/environment";
-import { Account } from "../../../models/classes/account.class";
+import { Account } from "../../../models/interfaces/account.interface";
 
 @Injectable({ providedIn: "root" })
 export class AccountService {
@@ -22,11 +21,11 @@ export class AccountService {
     return this.userSubject.value;
   }
 
-  storeSessionStorage(emailAddress, securePasskey) {
+  storeLocalSession(emailAddress, secretPassekey) {
     return this.http
       .post<Account>("http://localhost:8100/public/login/authenticate", {
         emailAddress,
-        securePasskey,
+        secretPassekey,
       })
       .pipe(
         map((account) => {

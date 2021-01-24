@@ -54,14 +54,18 @@ export class RegisterPage implements OnInit {
   }
 
   async finishRegistration() {
-    this.accountService
-      .register(this.registerForm.value)
-      .pipe(first())
-      .subscribe({
-        next: () => {
-          this.router.navigate(["/public/login"]);
-        },
-      });
+    // All fields must be valid before
+    // submission
+    if (this.registerForm.valid) {
+      this.accountService
+        .register(this.registerForm.value)
+        .pipe(first())
+        .subscribe({
+          next: () => {
+            this.router.navigate(["/public/login"]);
+          },
+        });
+    }
 
     const loader = await this.loadingController.create({
       duration: 2000,
@@ -70,6 +74,7 @@ export class RegisterPage implements OnInit {
     loader.present();
   }
 
+  // Can be redirected after successful registration
   openLoginPage() {
     this.navController.navigateRoot("/public/login");
   }

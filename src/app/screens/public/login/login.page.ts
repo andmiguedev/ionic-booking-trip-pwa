@@ -98,7 +98,7 @@ export class LoginPage implements OnInit {
   }
 
   loginAccountUser() {
-    this.accountService.storeSessionStorage(
+    this.accountService.storeLocalSession(
       this.loginForm.controls.email.value,
       this.loginForm.controls.password.value.pipe(first()).subscribe({
         next: () => {

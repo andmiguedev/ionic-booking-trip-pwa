@@ -4,6 +4,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { RouteReuseStrategy } from "@angular/router";
 import { HttpClientModule } from "@angular/common/http";
 
+import { handleAuthHttpRequests } from "./services/storage/account/auth.requests";
+
 import { IonicModule, IonicRouteStrategy } from "@ionic/angular";
 import { IonicStorageModule } from "@ionic/storage";
 
@@ -28,6 +30,7 @@ import { AppRoutingModule } from "./app-routing.module";
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    handleAuthHttpRequests,
   ],
   bootstrap: [AppComponent],
 })
