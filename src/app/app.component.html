@@ -3,7 +3,7 @@
     <ion-menu contentId="sideMenuContent" type="overlay">
       <ion-content class="bg-color animated fadeIn">
         <ion-card-content class="wrapper-customer">
-          <div class="passenger-info">
+          <div class="passenger-info" *ngIf="passenger">
             <img
               class="passenger-avatar"
               src="../assets/images/logo/alt-logo.png"

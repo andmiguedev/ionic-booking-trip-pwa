@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Router, ActivatedRoute } from "@angular/router";
+import { Router } from "@angular/router";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { first } from "rxjs/operators";
 
@@ -29,7 +29,6 @@ export class LoginPage implements OnInit {
     private toastController: ToastController,
     private formBuilder: FormBuilder,
     private accountService: AccountService,
-    private route: ActivatedRoute,
     private router: Router,
     private navController: NavController
   ) {}
@@ -46,8 +45,8 @@ export class LoginPage implements OnInit {
 
   validateFormFields() {
     this.loginForm = this.formBuilder.group({
-      email: ["", Validators.required, ValidatorService.validateEmail],
-      password: ["", Validators.required, ValidatorService.validatePassword],
+      email: ["", [Validators.required, ValidatorService.validateEmail]],
+      password: ["", [Validators.required, ValidatorService.validatePassword]],
     });
   }
 
@@ -97,16 +96,18 @@ export class LoginPage implements OnInit {
     await alert.present();
   }
 
-  loginAccountUser() {
-    this.accountService.storeLocalSession(
-      this.loginForm.controls.email.value,
-      this.loginForm.controls.password.value.pipe(first()).subscribe({
-        next: () => {
-          const returnUrl = this.route.snapshot.queryParams["returnUrl"] || "/";
-          this.router.navigateByUrl(returnUrl);
-        },
-      })
-    );
+  // Get access to field value by using controls attribute
+  get formControls() {
+    return this.loginForm.controls;
+  }
+
+  async authenticate() {
+    const loader = await this.loadingController.create({
+      message: "Not working",
+      duration: 2000,
+    });
+
+    loader.present();
   }
 
   openRegisterPage() {

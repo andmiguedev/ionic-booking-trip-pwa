@@ -14,7 +14,11 @@
     </div>
 
     <!-- Page that Customers Logged in -->
-    <form class="form-fields" [formGroup]="loginForm" (ngSubmit)="loginAccountUser()">
+    <form
+      class="form-fields"
+      [formGroup]="loginForm"
+      (ngSubmit)="authenticate()"
+    >
       <ion-item class="ion-no-padding animated fadeInUp">
         <ion-label position="floating" color="light">
           <ion-icon name="mail" item-start color="secondary"></ion-icon>

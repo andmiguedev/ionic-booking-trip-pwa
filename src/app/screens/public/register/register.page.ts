@@ -58,7 +58,7 @@ export class RegisterPage implements OnInit {
     // submission
     if (this.registerForm.valid) {
       this.accountService
-        .register(this.registerForm.value)
+        .registerUser(this.registerForm.value)
         .pipe(first())
         .subscribe({
           next: () => {

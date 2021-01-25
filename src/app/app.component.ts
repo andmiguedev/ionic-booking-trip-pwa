@@ -15,7 +15,7 @@ import { Account } from "./models/interfaces/account.interface";
 })
 export class AppComponent {
   // Store registered account into
-  account: Account;
+  passenger: Account;
   // Store Navbar menu pages
   public sideMenuPages: any;
 
@@ -26,7 +26,7 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar
   ) {
-    this.account = this.accountService.accessProfileInfo;
+    this.passenger = this.accountService.accessProfileInfo;
     this.sideMenuPages = this.screensService.getAllMobilePages();
   }
 

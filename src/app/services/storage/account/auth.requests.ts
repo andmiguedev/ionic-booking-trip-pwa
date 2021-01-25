@@ -11,8 +11,6 @@ import {
 } from "@angular/common/http";
 import { materialize, delay, dematerialize } from "rxjs/operators";
 
-// Initialize User tries
-// to register an account
 let accountsList = [];
 
 @Injectable()
@@ -27,46 +25,26 @@ export class AuthRequests implements HttpInterceptor {
 
     function handleHttpRequests() {
       switch (true) {
-        case url.endsWith("/public/login/authenticate") && method === "POST":
-          return loginAccount();
         case url.endsWith("/public/register/authorize") && method === "POST":
-          return registerAccount();
+          return authorizeUser();
         default:
           return next.handle(request);
       }
     }
 
-    function loginAccount() {
-      const { emailAddress, secretPasskey } = body;
-      const passenger = accountsList.find(
-        (a) =>
-          a.emailAddress === emailAddress && a.secretPasskey === secretPasskey
-      );
+    function authorizeUser() {
+      const account = body;
 
-      if (!passenger) {
-        return displayError("Email or password is incorrect");
+      if (accountsList.find((a) => a.email === account.email)) {
+        return displayError(`This Email ${account.email} already exists`);
       }
 
-      return successful({
-        ...validAccount(passenger),
-      });
-    }
-
-    function registerAccount() {
-      const newAccount = body;
-
-      if (
-        accountsList.find((a) => a.emailAddress === newAccount.emailAddress)
-      ) {
-        return displayError(
-          `This Email ${newAccount.emailAddress} already exists`
-        );
-      }
-
-      newAccount.memberId = accountsList.length
+      // Set numeric Id for each newly created Account
+      account.memberId = accountsList.length
         ? Math.max(...accountsList.map((a) => a.memberId)) + 1
         : 1;
-      accountsList.push(newAccount);
+      accountsList.push(account);
+      // Store the new Account details in localStorage
       localStorage.setItem("account", JSON.stringify(accountsList));
       return successful();
     }
@@ -84,17 +62,6 @@ export class AuthRequests implements HttpInterceptor {
       return throwError({
         error: { message },
       }).pipe(materialize(), delay(500), dematerialize());
-    }
-
-    function validAccount(member) {
-      const {
-        memberId,
-        fullName,
-        emailAddress,
-        secretPasskey,
-        contactPhone,
-      } = member;
-      return { memberId, fullName, emailAddress, secretPasskey, contactPhone };
     }
   }
 }
