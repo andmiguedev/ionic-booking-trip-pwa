@@ -5,7 +5,7 @@ import { ValidatorService } from "../../services/form/validator/validator.servic
 @Component({
   selector: "error-message",
   template: `
-    <p class="text-9" *ngIf="errorMessage !== null">
+    <p *ngIf="errorMessage !== null" class="text-9">
       <ion-text color="danger">{{ errorMessage }} </ion-text>
     </p>
   `,

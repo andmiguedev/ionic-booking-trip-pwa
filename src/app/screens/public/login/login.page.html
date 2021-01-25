@@ -14,11 +14,7 @@
     </div>
 
     <!-- Page that Customers Logged in -->
-    <form
-      class="form-fields"
-      [formGroup]="loginForm"
-      (ngSubmit)="authenticate()"
-    >
+    <form class="form-fields" [formGroup]="loginForm">
       <ion-item class="ion-no-padding animated fadeInUp">
         <ion-label position="floating" color="light">
           <ion-icon name="mail" item-start color="secondary"></ion-icon>
@@ -30,6 +26,7 @@
           formControlName="email"
         ></ion-input>
       </ion-item>
+      <error-message [fieldName]="loginForm.get('email')"></error-message>
       <ion-item class="ion-no-padding animated fadeInUp">
         <ion-label position="floating" color="light">
           <ion-icon name="lock-closed" item-start color="secondary"></ion-icon>
@@ -41,6 +38,7 @@
           formControlName="password"
         ></ion-input>
       </ion-item>
+      <error-message [fieldName]="loginForm.get('password')"></error-message>
     </form>
 
     <p
@@ -55,6 +53,7 @@
 
     <div>
       <ion-button
+        (click)="authenticate()"
         icon-left
         size="medium"
         expand="full"

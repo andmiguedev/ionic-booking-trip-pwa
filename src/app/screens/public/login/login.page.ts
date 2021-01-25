@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
+// import { Router } from "@angular/router";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { first } from "rxjs/operators";
 
@@ -12,6 +12,7 @@ import {
 } from "@ionic/angular";
 
 import { ValidatorService } from "./../../../services/form/validator/validator.service";
+// import { AlertService } from "../../../services/form/alert/alert.service";
 import { AccountService } from "../../../services/storage/account/account.service";
 
 @Component({
@@ -28,8 +29,9 @@ export class LoginPage implements OnInit {
     private loadingController: LoadingController,
     private toastController: ToastController,
     private formBuilder: FormBuilder,
+    // private alertService: AlertService,
     private accountService: AccountService,
-    private router: Router,
+    // private router: Router,
     private navController: NavController
   ) {}
 
@@ -102,9 +104,20 @@ export class LoginPage implements OnInit {
   }
 
   async authenticate() {
+    this.accountService
+      .loginUser(
+        this.formControls.email.value,
+        this.formControls.password.value
+      )
+      .pipe(first())
+      .subscribe({
+        next: () => {
+          this.navController.navigateForward("/shared/incentives");
+        },
+      });
+
     const loader = await this.loadingController.create({
-      message: "Not working",
-      duration: 2000,
+      duration: 1000,
     });
 
     loader.present();
