@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-// import { Router } from "@angular/router";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { first } from "rxjs/operators";
 
@@ -29,9 +28,7 @@ export class LoginPage implements OnInit {
     private loadingController: LoadingController,
     private toastController: ToastController,
     private formBuilder: FormBuilder,
-    // private alertService: AlertService,
     private accountService: AccountService,
-    // private router: Router,
     private navController: NavController
   ) {}
 
@@ -112,7 +109,7 @@ export class LoginPage implements OnInit {
       .pipe(first())
       .subscribe({
         next: () => {
-          this.navController.navigateForward("/shared/incentives");
+          this.navController.navigateForward("/flights/flights-search");
         },
       });
 

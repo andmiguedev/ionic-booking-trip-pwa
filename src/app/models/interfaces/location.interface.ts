@@ -1,6 +1,6 @@
 export interface Location {
   assignId: number;
   name: string;
-  city?: string;
+  state: string;
   country?: string;
 }

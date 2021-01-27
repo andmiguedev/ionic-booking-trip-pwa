@@ -12,7 +12,9 @@ import {
 import { materialize, delay, dematerialize } from "rxjs/operators";
 
 const storageKey = "account";
-const accountsList = JSON.parse(localStorage.getItem(storageKey));
+
+// Check if there is an existing session storage for a registered account
+const accountsList = JSON.parse(localStorage.getItem(storageKey)) || [];
 
 @Injectable()
 export class AuthRequests implements HttpInterceptor {

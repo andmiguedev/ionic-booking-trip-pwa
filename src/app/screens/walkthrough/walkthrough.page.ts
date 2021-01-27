@@ -1,6 +1,9 @@
 import { Component, ViewChild } from "@angular/core";
+import { Router } from "@angular/router";
 import { NavController, IonSlides } from "@ionic/angular";
+
 import { Slides } from "src/app/models/interfaces/slides.interface";
+import { AccountService } from "../../services/storage/account/account.service";
 
 @Component({
   selector: "app-walkthrough",
@@ -19,7 +22,11 @@ export class WalkthroughPage {
     speed: 1000,
   };
 
-  constructor(private navController: NavController) {
+  constructor(
+    private accountService: AccountService,
+    private router: Router,
+    private navController: NavController
+  ) {
     this.slideList = [
       {
         title: "<strong>What is BookingTrip</strong>?",
@@ -47,11 +54,7 @@ export class WalkthroughPage {
     this.slides.slideNext(1000, false);
   }
 
-  openSignupPage() {
-    this.navController.navigateForward("/public/register");
-  }
-
-  openMainPage() {
-    this.navController.navigateForward("/shared/incentives");
+  openLoginPage() {
+    this.navController.navigateForward("/public/login");
   }
 }

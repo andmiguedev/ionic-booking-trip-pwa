@@ -19,7 +19,7 @@ export class FlightsSearchPage implements OnInit {
 
   // Schema for one way trip
   public searchLocation: any = {
-    departure: "Fort Lauderdale, United States",
+    departure: "Fort Lauderdale, Florida",
     layover: "Stop Location",
     arrival: "Any Location",
     origin: new Date().toISOString(),

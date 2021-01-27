@@ -1,3 +1,4 @@
+import { LocationService } from "./../../../services/data/locations/location.service";
 import { Component, OnInit, Input } from "@angular/core";
 import { ModalController } from "@ionic/angular";
 import { Storage } from "@ionic/storage";
@@ -8,53 +9,10 @@ import { Storage } from "@ionic/storage";
   styleUrls: ["./pick-location.page.scss"],
 })
 export class PickLocationPage implements OnInit {
-  // Type assertion not defined
   @Input() place: any;
   @Input() searchLocation: any;
 
-  locations: any = {
-    placesList: [
-      {
-        id: 1,
-        name: "Current location",
-      },
-      {
-        id: 2,
-        name: "San Juan, Puerto Rico",
-      },
-      {
-        id: 3,
-        name: "Buenos Aires, Argentina",
-      },
-      {
-        id: 4,
-        name: "Rome, Italy",
-      },
-      {
-        id: 5,
-        name: "Miami, United States",
-      },
-      {
-        id: 6,
-        name: "New York, United States",
-      },
-      {
-        id: 7,
-        name: "Paris, France",
-      },
-      {
-        id: 8,
-        name: "Munich, Germany",
-      },
-      {
-        id: 9,
-        name: "Manchester, United Kingdom",
-      },
-      {
-        id: 10,
-        name: "Madrid, Span",
-      },
-    ],
+  location: any = {
     recent: [
       {
         id: 1,
@@ -63,18 +21,19 @@ export class PickLocationPage implements OnInit {
     ],
   };
 
-  // searchTerm: string = "";
   searchResults: any;
 
   constructor(
+    private locationService: LocationService,
     private storage: Storage,
     private modalController: ModalController
-  ) {}
+  ) {
+    this.searchResults = this.locationService.getAllLocations();
+  }
 
   ngOnInit() {
     console.log(this.place);
-    this.searchResults = this.locations.placesList;
-    // console.log(this.searchResults);
+    // this.searchResults = this.locations.placesList;
   }
 
   filterByLetters(event: any) {
@@ -83,25 +42,29 @@ export class PickLocationPage implements OnInit {
 
     // If the value entered is not found or empty
     if (fetchValue && fetchValue.trim() != "") {
-      this.searchResults = this.locations.placesList.filter((place) => {
-        // Show location places that match search term
-        return place.name.toLowerCase().indexOf(fetchValue.toLowerCase()) > -1;
-      });
+      this.searchResults = this.locationService
+        .getAllLocations()
+        .filter((place) => {
+          // Show location places that match search term
+          return (
+            place.name.toLowerCase().indexOf(fetchValue.toLowerCase()) > -1
+          );
+        });
     } else {
       // Show all locations available in local storage
-      this.searchResults = this.locations.placesList;
+      this.searchResults = this.locationService.getAllLocations();
     }
   }
 
   pickLocation(city) {
     if (this.place === "origin") {
       this.storage.set("departure", city.name);
-      this.searchLocation.departure = city.name;
+      this.searchLocation.departure = `${city.name}, ${city.state}`;
     }
 
     if (this.place === "destination") {
       this.storage.set("arrival", city.name);
-      this.searchLocation.arrival = city.name;
+      this.searchLocation.arrival = `${city.name}, ${city.state}`;
     }
 
     this.modalController.dismiss();
