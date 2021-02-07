@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  localApiUrl: "http://localhost:8100",
+  localApiUrl: "https://localhost:8100",
+  facebookAppId: "412291049986443",
 };
 
 /*

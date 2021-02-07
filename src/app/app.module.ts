@@ -5,6 +5,7 @@ import { RouteReuseStrategy } from "@angular/router";
 import { HttpClientModule } from "@angular/common/http";
 
 import { handleAuthHttpRequests } from "./services/storage/account/auth.requests";
+import { initFacebookSDK } from "./services/auth/facebook/initializeSDK";
 
 import { IonicModule, IonicRouteStrategy } from "@ionic/angular";
 import { IonicStorageModule } from "@ionic/storage";
@@ -31,6 +32,7 @@ import { AppRoutingModule } from "./app-routing.module";
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     handleAuthHttpRequests,
+    initFacebookSDK,
   ],
   bootstrap: [AppComponent],
 })

@@ -17,6 +17,6 @@ Initial design for a working protoype demo that improves the User experience of 
 npm install
 
 /* To start development server */
-ionic serve
+npm start
 
 ```

@@ -11,8 +11,8 @@ import {
 } from "@ionic/angular";
 
 import { ValidatorService } from "./../../../services/form/validator/validator.service";
-// import { AlertService } from "../../../services/form/alert/alert.service";
 import { AccountService } from "../../../services/storage/account/account.service";
+import { FacebookService } from "./../../../services/auth/facebook/facebook.service";
 
 @Component({
   selector: "app-login",
@@ -29,6 +29,7 @@ export class LoginPage implements OnInit {
     private toastController: ToastController,
     private formBuilder: FormBuilder,
     private accountService: AccountService,
+    private facebookService: FacebookService,
     private navController: NavController
   ) {}
 
@@ -118,6 +119,10 @@ export class LoginPage implements OnInit {
     });
 
     loader.present();
+  }
+
+  loginWithFacebook() {
+    this.facebookService.login();
   }
 
   openRegisterPage() {
