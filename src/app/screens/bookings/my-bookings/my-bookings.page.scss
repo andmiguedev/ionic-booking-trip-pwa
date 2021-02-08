@@ -1,0 +1,14 @@
+:host {
+  ion-content {
+    --background: var(--ion-color-light);
+  }
+
+  ion-list {
+    padding: 0;
+  }
+
+  ion-item {
+    --border-style: dotted;
+    --border-radius: 4px;
+  }
+}

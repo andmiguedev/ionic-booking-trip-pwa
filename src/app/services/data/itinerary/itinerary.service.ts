@@ -12,11 +12,11 @@ export class ItineraryService {
     private returnService: ReturnService
   ) {}
 
-  public getDepartureFlights() {
-    this.departureService.getRecentDepartures();
+  public fetchItineraryDepartures() {
+    this.departureService.getAvailableDepartures();
   }
 
-  public getReturnFlights() {
-    this.returnService.getRecentReturns();
+  public fetchItineraryReturns() {
+    this.returnService.getAvailableReturns();
   }
 }

@@ -14,6 +14,30 @@ const routes: Routes = [
         (m) => m.WalkthroughPageModule
       ),
   },
+  // {
+  //   path: "",
+  //   redirectTo: "/checkout",
+  //   pathMatch: "full",
+  // },
+  // {
+  //   path: "checkout",
+  //   loadChildren: () =>
+  //     import("./screens/checkout/checkout.module").then(
+  //       (m) => m.CheckoutModule
+  //     ),
+  // },
+  {
+    path: "",
+    redirectTo: "/bookings",
+    pathMatch: "full",
+  },
+  {
+    path: "bookings",
+    loadChildren: () =>
+      import("./screens/bookings/bookings.module").then(
+        (m) => m.BookingsModule
+      ),
+  },
   {
     path: "",
     redirectTo: "/flights",
@@ -44,18 +68,7 @@ const routes: Routes = [
     loadChildren: () =>
       import("./screens/profile/profile.module").then((m) => m.ProfileModule),
   },
-  {
-    path: "",
-    redirectTo: "/checkout",
-    pathMatch: "full",
-  },
-  {
-    path: "checkout",
-    loadChildren: () =>
-      import("./screens/checkout/checkout.module").then(
-        (m) => m.CheckoutModule
-      ),
-  },
+
   {
     path: "",
     redirectTo: "/shared",

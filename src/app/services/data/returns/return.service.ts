@@ -6,23 +6,23 @@ import { RETURNING } from "./returning-flights";
   providedIn: "root",
 })
 export class ReturnService {
-  returns: any;
-  selectFlight: any;
+  returningFlights: any;
   availableReturns: Array<Flight> = [];
+  returningFlight: any;
 
   constructor() {
-    this.returns = RETURNING;
+    this.availableReturns = RETURNING;
   }
 
-  getRecentReturns() {
-    return this.returns;
+  getAvailableReturns() {
+    return this.availableReturns;
   }
 
-  setReturnFlight(selectFlight) {
-    this.selectFlight = selectFlight;
+  setReturnFlight(returningFlight) {
+    this.returningFlight = returningFlight;
   }
 
   getReturnFlight() {
-    return this.selectFlight;
+    return this.returningFlight;
   }
 }

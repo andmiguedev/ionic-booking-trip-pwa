@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { LoadingController, NavController } from "@ionic/angular";
+import { NavController } from "@ionic/angular";
 
 import { ReturnService } from "./../../../services/data/returns/return.service";
 
@@ -13,19 +13,13 @@ export class FlightsReturningPage {
 
   constructor(
     private returnService: ReturnService,
-    private loadingController: LoadingController,
     private navController: NavController
   ) {
-    this.returnResults = this.returnService.getRecentReturns();
+    this.returnResults = this.returnService.getAvailableReturns();
   }
 
-  async seeItineraryInfo() {
-    const loader = await this.loadingController.create({
-      message: "Loading Itinerary...",
-      duration: 1000,
-    });
-
-    loader.present();
+  selectReturnFlight(returningFlight) {
+    this.returnService.setReturnFlight(returningFlight);
     this.navController.navigateForward("/flights/flight-information");
   }
 }

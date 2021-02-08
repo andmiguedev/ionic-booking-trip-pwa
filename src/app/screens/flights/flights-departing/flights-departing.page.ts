@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { NavController, LoadingController } from "@ionic/angular";
+import { NavController } from "@ionic/angular";
 
 import { DepartureService } from "./../../../services/data/departures/departure.service";
 
@@ -13,13 +13,13 @@ export class FlightsDepartingPage {
 
   constructor(
     private departureService: DepartureService,
-    private loadingController: LoadingController,
     private navController: NavController
   ) {
-    this.departureResults = this.departureService.getRecentDepartures();
+    this.departureResults = this.departureService.getAvailableDepartures();
   }
 
-  lookReturningFlight() {
+  selectDepartureFlight(departingFlight) {
+    this.departureService.setDepartureFlight(departingFlight);
     this.navController.navigateForward("/flights/flights-returning");
   }
 }

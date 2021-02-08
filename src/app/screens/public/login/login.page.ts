@@ -102,23 +102,25 @@ export class LoginPage implements OnInit {
   }
 
   async authenticate() {
-    this.accountService
-      .loginUser(
-        this.formControls.email.value,
-        this.formControls.password.value
-      )
-      .pipe(first())
-      .subscribe({
-        next: () => {
-          this.navController.navigateForward("/flights/flights-search");
-        },
+    if (this.loginForm.valid) {
+      this.accountService
+        .loginUser(
+          this.formControls.email.value,
+          this.formControls.password.value
+        )
+        .pipe(first())
+        .subscribe({
+          next: () => {
+            this.navController.navigateForward("/flights/flights-search");
+          },
+        });
+
+      const loader = await this.loadingController.create({
+        duration: 1000,
       });
 
-    const loader = await this.loadingController.create({
-      duration: 1000,
-    });
-
-    loader.present();
+      loader.present();
+    }
   }
 
   loginWithFacebook() {

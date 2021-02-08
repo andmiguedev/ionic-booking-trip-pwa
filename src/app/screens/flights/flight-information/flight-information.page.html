@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-card class="bg-white">
+  <ion-card class="bg-white" *ngIf="departingFlight">
     <ion-card-header class="ion-no-padding">
       <ion-item lines="none" color="light">
         <ion-icon name="airplane"></ion-icon>
@@ -57,7 +57,7 @@
     </ion-card-content>
   </ion-card>
 
-  <ion-card class="bg-white">
+  <ion-card class="bg-white" *ngIf="returningFlight">
     <ion-card-header class="ion-no-padding">
       <ion-item lines="none" color="light">
         <ion-icon name="airplane" class="return"></ion-icon>

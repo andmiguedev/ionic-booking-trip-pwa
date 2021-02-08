@@ -76,9 +76,10 @@ export class FlightsSearchPage implements OnInit {
 
   async searchItineraries() {
     const loader = await this.loadingController.create({
-      message: "Searching...",
-      duration: 1000,
+      message: "Searching Itinerary...",
+      duration: 2000,
     });
+
     loader.present();
     loader.onWillDismiss().then(() => {
       this.navController.navigateForward("/flights/flights-departing");

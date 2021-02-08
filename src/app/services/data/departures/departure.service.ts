@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+
 import { Flight } from "./../../../models/interfaces/flight.interface";
 import { DEPARTING } from "./departing-flights";
 
@@ -6,23 +7,23 @@ import { DEPARTING } from "./departing-flights";
   providedIn: "root",
 })
 export class DepartureService {
-  departures: any;
-  selectFlight: any;
+  departingFlights: any;
   availableDepartures: Array<Flight> = [];
+  departingFlight: any;
 
   constructor() {
-    this.departures = DEPARTING;
+    this.availableDepartures = DEPARTING;
   }
 
-  getRecentDepartures() {
-    return this.departures;
+  getAvailableDepartures() {
+    return this.availableDepartures;
   }
 
-  setDepartureFlight(selectFlight) {
-    this.selectFlight = selectFlight;
+  setDepartureFlight(departingFlight) {
+    this.departingFlight = departingFlight;
   }
 
   getDepartureFlight() {
-    return this.selectFlight;
+    return this.departingFlight;
   }
 }

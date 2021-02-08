@@ -17,8 +17,10 @@ export class FlightInformationPage {
     private returnService: ReturnService,
     private navController: NavController
   ) {
-    this.departingFlight = this.departureService.getRecentDepartures()[0];
-    this.returningFlight = this.returnService.getRecentReturns()[0];
+    this.departingFlight = this.departureService.getDepartureFlight();
+    // this.departureService.getAvailableDepartures()[0];
+    this.returningFlight = this.returnService.getReturnFlight();
+    // this.returnService.getAvailableReturns()[1];
   }
 
   openProfileInfo() {
