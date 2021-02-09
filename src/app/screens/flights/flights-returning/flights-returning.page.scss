@@ -1,0 +1,15 @@
+:host {
+  ion-content {
+    --background: linear-gradient(
+      -135deg,
+      var(--ion-color-dark),
+      var(--ion-color-tertiary)
+    );
+
+    ion-card {
+      ion-badge {
+        padding: 0.3em 0.7em;
+      }
+    }
+  }
+}

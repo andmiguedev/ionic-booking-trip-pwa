@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>My Bookings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list class="ion-no-padding">
+    <div *ngIf="itineraryFlights.length">
+      <ion-item-divider color="dark">
+        <ion-icon slot="start" name="airplane"></ion-icon>
+        <ion-label>
+          <h3>Flights</h3>
+        </ion-label>
+      </ion-item-divider>
+
+      <ion-item *ngFor="let booking of itineraryFlights">
+        <ion-label>
+          <h2>
+            <ion-text color="primary">
+              Booking ID: <strong>{{ booking.bookingId }}</strong>
+            </ion-text>
+          </h2>
+          <h3>
+            <ion-text color="tertiary">
+              <strong
+                >{{ booking.departing.originCode }}
+                <ion-icon name="airplane"></ion-icon>
+                {{ booking.departing.destinationCode }}
+              </strong>
+              - {{ booking.departing.duration }}
+            </ion-text>
+          </h3>
+        </ion-label>
+      </ion-item>
+    </div>
+  </ion-list>
+</ion-content>

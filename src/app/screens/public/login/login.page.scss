@@ -1,0 +1,47 @@
+:host {
+  ion-content {
+    --background: linear-gradient(
+      135deg,
+      var(--ion-color-dark),
+      var(--ion-color-primary)
+    );
+  }
+
+  .bg-video {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 0;
+    opacity: 0.2;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -o-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    --background: linear-gradient(
+      135deg,
+      var(--ion-color-dark),
+      var(--ion-color-primary)
+    );
+    background-size: cover;
+    object-fit: cover;
+  }
+
+  .text-link {
+    position: relative;
+    z-index: 10;
+    margin-bottom: 50px;
+  }
+
+  .text-media {
+    position: relative;
+    z-index: 20;
+    font-size: 18px;
+    color: var(--ion-color-dark-shade);
+    margin-top: 30px;
+  }
+}

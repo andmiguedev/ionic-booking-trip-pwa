@@ -1,0 +1,110 @@
+<ion-content class="ion-padding animated fadeIn visitor">
+  <div class="content">
+    <div class="ion-padding-horizontal ion-text-center animated fadeInDown">
+      <div class="logo"></div>
+      <h4 class="ion-no-margin">
+        <ion-text color="tertiary" class="fw-300">Booking</ion-text>
+        <ion-text color="light" class="fw-700">Trip</ion-text>
+      </h4>
+    </div>
+
+    <form
+      class="field-forms"
+      [formGroup]="registerForm"
+      (ngSubmit)="finishRegistration()"
+    >
+      <ion-item class="ion-no-padding animated fadeInUp">
+        <ion-label position="floating" color="light">
+          <ion-icon name="person" item-start color="secondary"></ion-icon>
+          &nbsp;Name
+        </ion-label>
+        <ion-input
+          color="secondary"
+          type="text"
+          color="secondary"
+          formControlName="fullName"
+        ></ion-input>
+      </ion-item>
+      <error-message [fieldName]="registerForm.get('fullName')"></error-message>
+      <ion-item class="ion-no-padding animated fadeInUp">
+        <ion-label position="floating" color="light">
+          <ion-icon name="mail" item-start color="secondary"></ion-icon>
+          &nbsp;Email Address
+        </ion-label>
+        <ion-input
+          color="secondary"
+          type="email"
+          formControlName="email"
+        ></ion-input>
+      </ion-item>
+      <error-message [fieldName]="registerForm.get('email')"></error-message>
+      <ion-item class="ion-no-padding animated fadeInUp">
+        <ion-label position="floating" color="light">
+          <ion-icon name="lock-closed" item-start color="secondary"></ion-icon>
+          &nbsp;Password
+        </ion-label>
+        <ion-input
+          color="secondary"
+          type="password"
+          formControlName="password"
+        ></ion-input>
+      </ion-item>
+      <error-message [fieldName]="registerForm.get('password')"></error-message>
+      <ion-item class="ion-no-padding animated fadeInUp">
+        <ion-label position="floating" color="light">
+          <ion-icon
+            name="phone-portrait"
+            item-start
+            color="secondary"
+          ></ion-icon>
+          &nbsp;Phone Number
+        </ion-label>
+        <ion-input
+          color="secondary"
+          type="text"
+          formControlName="phone"
+        ></ion-input>
+      </ion-item>
+      <error-message [fieldName]="registerForm.get('phone')"></error-message>
+    </form>
+
+    <div class="ion-margin-top">
+      <ion-button
+        (click)="finishRegistration()"
+        icon-left
+        type="submit"
+        size="medium"
+        expand="full"
+        shape="round"
+        color="secondary"
+        tappable
+        [disabled]="!registerForm.valid"
+      >
+        Sign Up
+      </ion-button>
+    </div>
+    <div class="ion-text-center ion-margin-top">
+      <span (click)="openLoginPage()" tappable>
+        <ion-text color="light">
+          <h6>Already have an account?</h6>
+        </ion-text>
+      </span>
+    </div>
+    <p class="ion-text-center">
+      <ion-text color="light"> Or </ion-text>
+    </p>
+    <div class="ion-margin-top">
+      <ion-button
+        icon-left
+        size="medium"
+        expand="full"
+        shape="round"
+        color="primary"
+        tappable
+      >
+        <ion-icon name="logo-facebook"></ion-icon>
+        &nbsp; Continue with Facebook
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

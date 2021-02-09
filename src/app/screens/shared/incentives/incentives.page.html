@@ -1,0 +1,99 @@
+<header-menu></header-menu>
+
+<ion-content>
+  <div class="deals-container ion-no-margin">
+    <div class="deals-wrapper bg-light">
+      <ion-card-header>
+        <ion-card class="ion-no-margin">
+          <ion-card-content class="bg-color">
+            <h2 class="ion-text-center text-white text-10">
+              Latest deals on Favorite destinations
+            </h2>
+          </ion-card-content>
+        </ion-card>
+      </ion-card-header>
+
+      <ion-card-content class="green-card">
+        <ion-grid class="ion-no-padding">
+          <ion-row>
+            <ion-col size="12" class="ion-no-padding">
+              <ion-card class="ion-no-margin">
+                <img [src]="passengerDeals[0].picture" />
+                <div class="deal-title">
+                  {{ passengerDeals[0].place }},
+                  <strong>{{ passengerDeals[0].state }}</strong>
+                </div>
+                <p class="deal-subtitle ion-text-center">
+                  {{ passengerDeals[0].description }}
+                </p>
+                <ion-button
+                  class="deal-cta"
+                  size="small"
+                  expand="full"
+                  shape="round"
+                  color="secondary"
+                  (click)="goToFlightsSearch()"
+                  >Book Now
+                </ion-button>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+      <ion-card-content class="brown-card">
+        <ion-grid class="ion-no-padding">
+          <ion-row>
+            <ion-col size="12" class="ion-no-padding">
+              <ion-card class="ion-no-margin">
+                <img [src]="passengerDeals[1].picture" />
+                <div class="deal-title">
+                  {{ passengerDeals[1].place }},
+                  <strong>{{ passengerDeals[1].state }}</strong>
+                </div>
+                <p class="deal-subtitle ion-text-center">
+                  {{ passengerDeals[1].description }}
+                </p>
+                <ion-button
+                  class="deal-cta"
+                  size="small"
+                  expand="full"
+                  shape="round"
+                  color="secondary"
+                  (click)="goToFlightsSearch()"
+                  >Book Now
+                </ion-button>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+      <ion-card-content class="blue-card">
+        <ion-grid class="ion-no-padding">
+          <ion-row>
+            <ion-col size="12" class="ion-no-padding">
+              <ion-card class="ion-no-margin">
+                <img [src]="passengerDeals[2].picture" />
+                <div class="deal-title">
+                  {{ passengerDeals[2].place }},
+                  <strong>{{ passengerDeals[2].state }}</strong>
+                </div>
+                <p class="deal-subtitle ion-text-center">
+                  {{ passengerDeals[2].description }}
+                </p>
+                <ion-button
+                  class="deal-cta"
+                  size="small"
+                  expand="full"
+                  shape="round"
+                  color="secondary"
+                  (click)="goToFlightsSearch()"
+                  >Book Now
+                </ion-button>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </div>
+  </div>
+</ion-content>

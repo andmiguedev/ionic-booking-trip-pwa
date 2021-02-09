@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title> Choose your location </ion-title>
+    <ion-buttons slot="end">
+      <ion-button
+        (click)="closeSearchBar()"
+        size="small"
+        shape="round"
+        color="tertiary"
+      >
+        <ion-icon name="close" slot="start"></ion-icon>
+        Close
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ion-toolbar color="primary">
+    <ion-searchbar
+      (ionInput)="filterByLetters($event)"
+      type="text"
+      placeholder="Find specific location"
+      animated="true"
+    ></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="animated fadeIn" tappable>
+  <ion-item
+    (click)="pickLocation(city)"
+    *ngFor="let city of location.recent"
+    color="tertiary"
+    tappable
+  >
+    <ion-icon name="locate" color="light" slot="start"></ion-icon>
+    <ion-text color="dark"><strong>{{ city.name }}</strong></ion-text>
+  </ion-item>
+  <ion-item
+    *ngFor="let city of searchResults"
+    class="bg-light"
+    tappable
+    (click)="pickLocation(city)"
+  >
+    <ion-icon name="time" color="dark" slot="start"></ion-icon>
+    <ion-text color="primary">{{ city.name }}, {{ city.state }}</ion-text>
+  </ion-item>
+</ion-content>

@@ -1,0 +1,24 @@
+:host {
+  ion-content {
+    --background: linear-gradient(
+      -135deg,
+      var(--ion-color-dark),
+      var(--ion-color-tertiary)
+    );
+
+    ion-item {
+      .return {
+        transform: rotate(180deg);
+      }
+      .select {
+        transform: rotate(340deg);
+      }
+    }
+
+    ion-card {
+      ion-badge {
+        padding: 0.3em 0.7em;
+      }
+    }
+  }
+}

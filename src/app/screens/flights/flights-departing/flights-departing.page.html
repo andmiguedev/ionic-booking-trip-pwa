@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Departing Flights</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding bg-tertiary">
+    <p class="ion-no-margin text-white">
+      <strong>{{ departureResults?.length }}</strong> results found
+    </p>
+  </div>
+
+  <ion-card
+    class="bg-white"
+    *ngFor="let departingFlight of departureResults"
+    tappable
+    (click)="selectDepartureFlight(departingFlight)"
+  >
+    <ion-card-content class="ion-no-padding">
+      <ion-item lines="none">
+        <ion-thumbnail slot="start">
+          <img [src]="departingFlight.companyLogo" />
+        </ion-thumbnail>
+
+        <ion-label>
+          <h2>
+            <ion-text color="primary">
+              <strong>{{ departingFlight.departureTime }}</strong> -
+              <strong>{{ departingFlight.arrivalTime }}</strong>
+            </ion-text>
+          </h2>
+          <h3>
+            <ion-text class="ion-margin-top" color="success"
+              >{{ departingFlight.duration }} ({{ departingFlight.layover
+              }})</ion-text
+            >
+          </h3>
+          <h3>
+            <ion-text class="ion-margin-top" color="dark">
+              <strong> {{ departingFlight.originCode }} &nbsp;</strong
+              ><ion-icon name="airplane"></ion-icon>
+              <strong>&nbsp;{{ departingFlight.destinationCode }}</strong>
+            </ion-text>
+          </h3>
+        </ion-label>
+
+        <div slot="end">
+          <ion-badge color="success">
+            <h2 class="text-white fw-500">
+              {{ departingFlight.ticketPrice | currency:'USD':'symbol':'2.0' }}
+            </h2>
+          </ion-badge>
+          <p class="text-6">
+            <ion-text color="primary">
+              {{ departingFlight.labelTicket }}
+            </ion-text>
+          </p>
+        </div>
+      </ion-item>
+
+      <ion-item color="light" class="text-7 ion-text-center">
+        <ion-label>
+          <ion-text color="success" class="fw-700">Clean Cabin &nbsp;</ion-text>
+          • &nbsp;{{ departingFlight.purchaseClass }} | {{
+          departingFlight.aircraft }}
+        </ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
