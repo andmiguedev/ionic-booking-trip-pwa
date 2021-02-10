@@ -15,9 +15,10 @@ import { BookingService } from "./../../../services/data/bookings/booking.servic
   styleUrls: ["./flight-checkout.page.scss"],
 })
 export class FlightCheckoutPage {
+  public reservationId: number = Math.floor(Math.random() * Math.floor(9999));
   public departingFlight: any;
   public returningFlight: any;
-  public reservatonId: number = Math.floor(Math.random() * Math.floor(9999));
+
   passengers: number = 1;
 
   constructor(
@@ -28,13 +29,11 @@ export class FlightCheckoutPage {
     private toastController: ToastController,
     private navController: NavController
   ) {
-    this.departingFlight =
-      this.departureService.getDepartureFlight() ||
-      this.departureService.getAvailableDepartures()[0];
+    this.departingFlight = this.departureService.getDepartureFlight();
+    // this.departureService.getAvailableDepartures()[0];
 
-    this.returningFlight =
-      this.returnService.getReturnFlight() ||
-      this.returnService.getAvailableReturns()[1];
+    this.returningFlight = this.returnService.getReturnFlight();
+    // this.returnService.getAvailableReturns()[1];
   }
 
   addPassenger() {
@@ -65,9 +64,9 @@ export class FlightCheckoutPage {
         .sendItineraryBooking(
           this.departingFlight,
           this.returningFlight,
-          this.reservatonId
+          this.reservationId
         )
-        .then((res) => {
+        .then((response) => {
           setTimeout(() => {
             loader.dismiss();
             toast.present();

@@ -8,26 +8,29 @@ import { ReturnService } from "./../returns/return.service";
 })
 export class BookingService {
   numberOfBookings = 0;
-  bookedFlights: Array<any> = [];
+  itineraryFlights: Array<any> = [];
 
   constructor(
     private departureService: DepartureService,
     private returnService: ReturnService
   ) {}
 
+  departing = this.departureService.getDepartureFlight();
+  returning = this.returnService.getReturnFlight();
+
   sendItineraryBooking(departing, returning, bookingId) {
     this.numberOfBookings = this.numberOfBookings + 1;
-    this.bookedFlights.push({
+    this.itineraryFlights.push({
       id: this.numberOfBookings,
       bookingId: bookingId,
-      departing: this.departureService.setDepartureFlight(departing),
-      returning: this.returnService.setReturnFlight(returning),
+      departing: departing,
+      returning: returning,
     });
 
     return Promise.resolve();
   }
 
   getFlightBookings() {
-    return Promise.resolve(this.bookedFlights);
+    return Promise.resolve(this.itineraryFlights);
   }
 }

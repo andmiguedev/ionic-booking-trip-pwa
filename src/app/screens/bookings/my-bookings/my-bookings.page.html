@@ -34,6 +34,16 @@
               - {{ booking.departing.duration }}
             </ion-text>
           </h3>
+          <h3>
+            <ion-text color="tertiary">
+              <strong
+                >{{ booking.returning.originCode }}
+                <ion-icon name="airplane"></ion-icon>
+                {{ booking.returning.destinationCode }}
+              </strong>
+              - {{ booking.returning.duration }}
+            </ion-text>
+          </h3>
         </ion-label>
       </ion-item>
     </div>

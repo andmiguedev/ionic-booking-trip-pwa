@@ -14,18 +14,18 @@ const routes: Routes = [
         (m) => m.WalkthroughPageModule
       ),
   },
-  // {
-  //   path: "",
-  //   redirectTo: "/checkout",
-  //   pathMatch: "full",
-  // },
-  // {
-  //   path: "checkout",
-  //   loadChildren: () =>
-  //     import("./screens/checkout/checkout.module").then(
-  //       (m) => m.CheckoutModule
-  //     ),
-  // },
+  {
+    path: "",
+    redirectTo: "/checkout",
+    pathMatch: "full",
+  },
+  {
+    path: "checkout",
+    loadChildren: () =>
+      import("./screens/checkout/checkout.module").then(
+        (m) => m.CheckoutModule
+      ),
+  },
   {
     path: "",
     redirectTo: "/bookings",

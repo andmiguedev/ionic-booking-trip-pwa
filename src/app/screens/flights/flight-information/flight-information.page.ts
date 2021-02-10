@@ -12,15 +12,14 @@ import { ReturnService } from "./../../../services/data/returns/return.service";
 export class FlightInformationPage {
   public departingFlight: any;
   public returningFlight: any;
+  
   constructor(
     private departureService: DepartureService,
     private returnService: ReturnService,
     private navController: NavController
   ) {
     this.departingFlight = this.departureService.getDepartureFlight();
-    // this.departureService.getAvailableDepartures()[0];
     this.returningFlight = this.returnService.getReturnFlight();
-    // this.returnService.getAvailableReturns()[1];
   }
 
   openProfileInfo() {

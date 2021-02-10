@@ -10,13 +10,13 @@ import { BookingService } from "./../../../services/data/bookings/booking.servic
 export class MyBookingsPage {
   itineraryFlights: Array<any> = [];
 
-  constructor(private BookingService: BookingService) {
+  constructor(private bookingService: BookingService) {
     this.fetchItineraryFlights();
   }
 
   fetchItineraryFlights() {
-    this.BookingService.getFlightBookings().then((itinerary) => {
-      this.itineraryFlights = itinerary;
+    this.bookingService.getFlightBookings().then((data) => {
+      this.itineraryFlights = data;
     });
   }
 }
