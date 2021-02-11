@@ -16,6 +16,33 @@ const routes: Routes = [
   },
   {
     path: "",
+    redirectTo: "/public",
+    pathMatch: "full",
+  },
+  {
+    path: "public",
+    loadChildren: () =>
+      import("./screens/public/public.module").then((m) => m.PublicModule),
+  },
+  {
+    path: "sidedrawer",
+    loadChildren: () =>
+      import("./screens/sidedrawer/sidedrawer.module").then(
+        (m) => m.SidedrawerPageModule
+      ),
+  },
+  {
+    path: "",
+    redirectTo: "/flights",
+    pathMatch: "full",
+  },
+  {
+    path: "flights",
+    loadChildren: () =>
+      import("./screens/flights/flights.module").then((m) => m.FlightsModule),
+  },
+  {
+    path: "",
     redirectTo: "/checkout",
     pathMatch: "full",
   },
@@ -38,26 +65,16 @@ const routes: Routes = [
         (m) => m.BookingsModule
       ),
   },
-  {
-    path: "",
-    redirectTo: "/flights",
-    pathMatch: "full",
-  },
-  {
-    path: "flights",
-    loadChildren: () =>
-      import("./screens/flights/flights.module").then((m) => m.FlightsModule),
-  },
-  {
-    path: "",
-    redirectTo: "/cruises",
-    pathMatch: "full",
-  },
-  {
-    path: "cruises",
-    loadChildren: () =>
-      import("./screens/cruises/cruises.module").then((m) => m.CruisesModule),
-  },
+  // {
+  //   path: "",
+  //   redirectTo: "/cruises",
+  //   pathMatch: "full",
+  // },
+  // {
+  //   path: "cruises",
+  //   loadChildren: () =>
+  //     import("./screens/cruises/cruises.module").then((m) => m.CruisesModule),
+  // },
   {
     path: "",
     redirectTo: "/profile",
@@ -78,16 +95,6 @@ const routes: Routes = [
     path: "shared",
     loadChildren: () =>
       import("./screens/shared/shared.module").then((m) => m.SharedModule),
-  },
-  {
-    path: "",
-    redirectTo: "/public",
-    pathMatch: "full",
-  },
-  {
-    path: "public",
-    loadChildren: () =>
-      import("./screens/public/public.module").then((m) => m.PublicModule),
   },
 ];
 

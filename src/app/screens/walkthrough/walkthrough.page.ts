@@ -1,5 +1,4 @@
 import { Component, ViewChild } from "@angular/core";
-import { Router } from "@angular/router";
 import { NavController, IonSlides } from "@ionic/angular";
 
 import { Slides } from "src/app/models/interfaces/slides.interface";
@@ -24,7 +23,6 @@ export class WalkthroughPage {
 
   constructor(
     private accountService: AccountService,
-    private router: Router,
     private navController: NavController
   ) {
     this.slideList = [
@@ -47,6 +45,8 @@ export class WalkthroughPage {
         image: "assets/images/slides/slide3.png",
       },
     ];
+
+    this.keepPassengerLoggedIn();
   }
 
   // Swipe to the next slide
@@ -55,6 +55,14 @@ export class WalkthroughPage {
   }
 
   openLoginPage() {
-    this.navController.navigateForward("/public/login");
+    this.navController.navigateBack("/public/register");
+  }
+
+  keepPassengerLoggedIn() {
+    if (this.accountService.accessProfileInfo) {
+      this.navController.navigateForward("/flights/flights-search");
+    } else {
+      this.navController.navigateRoot("/public/login");
+    }
   }
 }
