@@ -1,5 +1,5 @@
 import { Component, ViewChild } from "@angular/core";
-import { NavController, IonSlides } from "@ionic/angular";
+import { IonSlides, NavController, LoadingController } from "@ionic/angular";
 
 import { Slides } from "src/app/models/interfaces/slides.interface";
 import { AccountService } from "../../services/storage/account/account.service";
@@ -23,7 +23,8 @@ export class WalkthroughPage {
 
   constructor(
     private accountService: AccountService,
-    private navController: NavController
+    private navController: NavController,
+    private loadingController: LoadingController
   ) {
     this.slideList = [
       {
@@ -52,11 +53,19 @@ export class WalkthroughPage {
     this.navController.navigateBack("/public/login");
   }
 
-  keepPassengerLoggedIn() {
-    if (this.accountService.accessProfileInfo) {
-      this.navController.navigateForward("/flights/flights-search");
-    } else {
-      this.navController.navigateRoot("/public/login");
-    }
+  async keepPassengerLoggedIn() {
+    const loader = await this.loadingController.create({
+      message: "We have recognized your Account",
+      duration: 3000,
+    });
+
+    loader.present();
+    loader.onWillDismiss().then(() => {
+      if (this.accountService.accessProfileInfo) {
+        this.navController.navigateForward("/navigation/tabs");
+      } else {
+        this.navController.navigateRoot("/public/login");
+      }
+    });
   }
 }

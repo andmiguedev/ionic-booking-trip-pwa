@@ -1,5 +1,9 @@
 import { Component } from "@angular/core";
-import { NavController, LoadingController } from "@ionic/angular";
+import {
+  NavController,
+  MenuController,
+  LoadingController,
+} from "@ionic/angular";
 
 import { IncentiveService } from "./../../../services/data/incentive/incentive.service";
 
@@ -13,10 +17,15 @@ export class IncentivesPage {
 
   constructor(
     private incentiveService: IncentiveService,
+    private menuController: MenuController,
     private loadingController: LoadingController,
     private navController: NavController
   ) {
     this.passengerDeals = this.incentiveService.getAllIncentives();
+  }
+
+  ionViewWillEnter() {
+    this.menuController.enable(true);
   }
 
   async goToFlightsSearch() {
