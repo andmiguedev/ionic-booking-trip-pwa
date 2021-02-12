@@ -2,7 +2,6 @@ import { Component } from "@angular/core";
 import { MenuController } from "@ionic/angular";
 
 import { Account } from "../../../models/interfaces/account.interface";
-import { ProfileService } from "./../../../services/data/profiles/profile.service";
 import { AccountService } from "./../../../services/storage/account/account.service";
 
 @Component({

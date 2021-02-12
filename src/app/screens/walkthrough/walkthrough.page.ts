@@ -30,19 +30,13 @@ export class WalkthroughPage {
         title: "<strong>What is BookingTrip</strong>?",
         description:
           "We have worked through the line to bring you a smoother booking experience and, easy to use App for travelers",
-        image: "assets/images/slides/slide1.png",
+        image: "assets/images/slides/4002813.png",
       },
       {
         title: "<strong>Why Booking Trip</strong>?",
         description:
           "Have access to Cruise schedules, Airplane seasonal tickets, and Train itineraries from the palm of your hand",
-        image: "assets/images/slides/slide2.png",
-      },
-      {
-        title: "Your leisure Vacation is on",
-        description:
-          "Visit city places that are around your area, get exclusive deals on multiple destinations, and travel throughout the country in comfort",
-        image: "assets/images/slides/slide3.png",
+        image: "assets/images/slides/3946557.png",
       },
     ];
 
