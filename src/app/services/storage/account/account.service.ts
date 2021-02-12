@@ -1,5 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import { Router } from "@angular/router";
+
 import { BehaviorSubject, Observable } from "rxjs";
 import { map } from "rxjs/operators";
 
@@ -10,7 +12,7 @@ export class AccountService {
   private userSubject: BehaviorSubject<Account>;
   public account: Observable<Account>;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     this.userSubject = new BehaviorSubject<Account>(
       JSON.parse(localStorage.getItem("account"))
     );
@@ -37,6 +39,12 @@ export class AccountService {
           this.userSubject.next(account);
         })
       );
+  }
+
+  logoutUser() {
+    localStorage.removeItem("passenger");
+    this.userSubject.next(null);
+    this.router.navigate(["/public/login"]);
   }
 
   public get accessProfileInfo(): Account {

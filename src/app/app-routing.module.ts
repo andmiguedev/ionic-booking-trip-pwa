@@ -25,6 +25,16 @@ const routes: Routes = [
       import("./screens/public/public.module").then((m) => m.PublicModule),
   },
   {
+    path: "",
+    redirectTo: "/profile",
+    pathMatch: "full",
+  },
+  {
+    path: "profile",
+    loadChildren: () =>
+      import("./screens/profile/profile.module").then((m) => m.ProfileModule),
+  },
+  {
     path: "sidedrawer",
     loadChildren: () =>
       import("./screens/sidedrawer/sidedrawer.module").then(

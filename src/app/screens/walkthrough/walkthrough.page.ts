@@ -55,7 +55,7 @@ export class WalkthroughPage {
   }
 
   openLoginPage() {
-    this.navController.navigateBack("/public/register");
+    this.navController.navigateBack("/public/login");
   }
 
   keepPassengerLoggedIn() {
