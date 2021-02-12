@@ -54,18 +54,20 @@ export class WalkthroughPage {
   }
 
   async keepPassengerLoggedIn() {
-    const loader = await this.loadingController.create({
-      message: "We have recognized your Account",
-      duration: 3000,
-    });
+    if (this.accountService.accessProfileInfo) {
+      const loader = await this.loadingController.create({
+        message: "We have recognized your Account",
+        duration: 3000,
+      });
 
-    loader.present();
-    loader.onWillDismiss().then(() => {
-      if (this.accountService.accessProfileInfo) {
-        this.navController.navigateForward("/navigation/tabs");
-      } else {
-        this.navController.navigateRoot("/public/login");
-      }
-    });
+      loader.present();
+      loader.onWillDismiss().then(() => {
+        this.navController.navigateForward(
+          "/navigation/tabs/flights/flights-search"
+        );
+      });
+    } else {
+      this.navController.navigateRoot("/public/login");
+    }
   }
 }

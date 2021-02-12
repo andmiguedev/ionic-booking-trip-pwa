@@ -12,6 +12,12 @@ export class AccountService {
   private userSubject: BehaviorSubject<Account>;
   public account: Observable<Account>;
 
+  private isPassengerAuthenticated = false;
+
+  public get validPassengerStatus(): boolean {
+    return this.isPassengerAuthenticated;
+  }
+
   constructor(private http: HttpClient, private router: Router) {
     this.userSubject = new BehaviorSubject<Account>(
       JSON.parse(localStorage.getItem("account"))
@@ -37,6 +43,7 @@ export class AccountService {
           // Store the logged in session
           localStorage.setItem("passenger", JSON.stringify(account));
           this.userSubject.next(account);
+          this.isPassengerAuthenticated = true;
         })
       );
   }
@@ -44,6 +51,8 @@ export class AccountService {
   logoutUser() {
     localStorage.removeItem("passenger");
     this.userSubject.next(null);
+
+    this.isPassengerAuthenticated = false;
     this.router.navigate(["/public/login"]);
   }
 

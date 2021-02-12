@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
+import { ProtectedGuard } from "./services/auth/protected/protected.guard";
 
 const routes: Routes = [
   {
@@ -30,6 +31,7 @@ const routes: Routes = [
       import("./screens/navigation/navigation.module").then(
         (m) => m.NavigationModule
       ),
+    // canLoad: [ProtectedGuard],
   },
   {
     path: "",
@@ -40,6 +42,7 @@ const routes: Routes = [
     path: "flights",
     loadChildren: () =>
       import("./screens/flights/flights.module").then((m) => m.FlightsModule),
+    canLoad: [ProtectedGuard],
   },
   {
     path: "",
@@ -52,6 +55,7 @@ const routes: Routes = [
       import("./screens/checkout/checkout.module").then(
         (m) => m.CheckoutModule
       ),
+    canLoad: [ProtectedGuard],
   },
   {
     path: "",
@@ -64,6 +68,7 @@ const routes: Routes = [
       import("./screens/bookings/bookings.module").then(
         (m) => m.BookingsModule
       ),
+    canLoad: [ProtectedGuard],
   },
   {
     path: "",
@@ -74,6 +79,7 @@ const routes: Routes = [
     path: "cruises",
     loadChildren: () =>
       import("./screens/cruises/cruises.module").then((m) => m.CruisesModule),
+    canLoad: [ProtectedGuard],
   },
   {
     path: "",
@@ -84,6 +90,7 @@ const routes: Routes = [
     path: "profile",
     loadChildren: () =>
       import("./screens/profile/profile.module").then((m) => m.ProfileModule),
+    canLoad: [ProtectedGuard],
   },
 
   {
@@ -95,6 +102,7 @@ const routes: Routes = [
     path: "shared",
     loadChildren: () =>
       import("./screens/shared/shared.module").then((m) => m.SharedModule),
+    canLoad: [ProtectedGuard],
   },
 ];
 
