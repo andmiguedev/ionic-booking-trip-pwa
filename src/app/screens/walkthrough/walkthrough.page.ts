@@ -1,13 +1,13 @@
-import { Component, ViewChild } from "@angular/core";
-import { IonSlides, NavController, LoadingController } from "@ionic/angular";
+import { Component, ViewChild } from '@angular/core';
+import { IonSlides, NavController, LoadingController } from '@ionic/angular';
 
-import { Slides } from "src/app/models/interfaces/slides.interface";
-import { AccountService } from "../../services/storage/account/account.service";
+import { Slides } from 'src/app/models/interfaces/slides.interface';
+import { AccountService } from '../../services/storage/account/account.service';
 
 @Component({
-  selector: "app-walkthrough",
-  templateUrl: "./walkthrough.page.html",
-  styleUrls: ["./walkthrough.page.scss"],
+  selector: 'app-walkthrough',
+  templateUrl: './walkthrough.page.html',
+  styleUrls: ['./walkthrough.page.scss'],
 })
 export class WalkthroughPage {
   slideList: Array<Slides>;
@@ -17,7 +17,7 @@ export class WalkthroughPage {
   })
   slides: IonSlides;
   slideOpts = {
-    effect: "flip",
+    effect: 'flip',
     speed: 1000,
   };
 
@@ -28,20 +28,18 @@ export class WalkthroughPage {
   ) {
     this.slideList = [
       {
-        title: "<strong>What is BookingTrip</strong>?",
+        title: '<strong>What is BookingTrip</strong>?',
         description:
-          "We have worked through the line to bring you a smoother booking experience and, easy to use App for travelers",
-        image: "assets/images/slides/4002813.png",
+          'We have worked through the line to bring you a smoother booking experience and, easy to use App for travelers',
+        image: 'assets/images/slides/4002813.png',
       },
       {
-        title: "<strong>Why Booking Trip</strong>?",
+        title: '<strong>Why Booking Trip</strong>?',
         description:
-          "Have access to Cruise schedules, Airplane seasonal tickets, and Train itineraries from the palm of your hand",
-        image: "assets/images/slides/3946557.png",
+          'Have access to Cruise schedules, Airplane seasonal tickets, and Train itineraries from the palm of your hand',
+        image: 'assets/images/slides/3946557.png',
       },
     ];
-
-    this.keepPassengerLoggedIn();
   }
 
   // Swipe to the next slide
@@ -50,24 +48,20 @@ export class WalkthroughPage {
   }
 
   openLoginPage() {
-    this.navController.navigateBack("/public/login");
+    this.navController.navigateBack('/public/login');
   }
 
   async keepPassengerLoggedIn() {
-    if (this.accountService.accessProfileInfo) {
-      const loader = await this.loadingController.create({
-        message: "We have recognized your Account",
-        duration: 3000,
-      });
+    const loader = await this.loadingController.create({
+      duration: 1000,
+    });
 
-      loader.present();
-      loader.onWillDismiss().then(() => {
-        this.navController.navigateForward(
-          "/navigation/tabs/flights/flights-search"
-        );
-      });
-    } else {
-      this.navController.navigateRoot("/public/login");
-    }
+    loader.present();
+    loader.onWillDismiss().then(() => {
+      if (!this.accountService.accessProfileInfo) {
+        this.navController.navigateRoot('/public/login');
+      }
+      this.navController.navigateForward('/navigation/flights/flights-search');
+    });
   }
 }
