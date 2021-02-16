@@ -1,14 +1,13 @@
-import { Component, ViewChild } from "@angular/core";
-import { Router } from "@angular/router";
-import { NavController, IonSlides } from "@ionic/angular";
+import { Component, ViewChild } from '@angular/core';
+import { IonSlides, NavController, LoadingController } from '@ionic/angular';
 
-import { Slides } from "src/app/models/interfaces/slides.interface";
-import { AccountService } from "../../services/storage/account/account.service";
+import { Slides } from 'src/app/models/interfaces/slides.interface';
+import { AccountService } from '../../services/storage/account/account.service';
 
 @Component({
-  selector: "app-walkthrough",
-  templateUrl: "./walkthrough.page.html",
-  styleUrls: ["./walkthrough.page.scss"],
+  selector: 'app-walkthrough',
+  templateUrl: './walkthrough.page.html',
+  styleUrls: ['./walkthrough.page.scss'],
 })
 export class WalkthroughPage {
   slideList: Array<Slides>;
@@ -18,33 +17,27 @@ export class WalkthroughPage {
   })
   slides: IonSlides;
   slideOpts = {
-    effect: "flip",
+    effect: 'flip',
     speed: 1000,
   };
 
   constructor(
     private accountService: AccountService,
-    private router: Router,
-    private navController: NavController
+    private navController: NavController,
+    private loadingController: LoadingController
   ) {
     this.slideList = [
       {
-        title: "<strong>What is BookingTrip</strong>?",
+        title: '<strong>What is BookingTrip</strong>?',
         description:
-          "We have worked through the line to bring you a smoother booking experience and, easy to use App for travelers",
-        image: "assets/images/slides/slide1.png",
+          'We have worked through the line to bring you a smoother booking experience and, easy to use App for travelers',
+        image: 'assets/images/slides/4002813.png',
       },
       {
-        title: "<strong>Why Booking Trip</strong>?",
+        title: '<strong>Why Booking Trip</strong>?',
         description:
-          "Have access to Cruise schedules, Airplane seasonal tickets, and Train itineraries from the palm of your hand",
-        image: "assets/images/slides/slide2.png",
-      },
-      {
-        title: "Your leisure Vacation is on",
-        description:
-          "Visit city places that are around your area, get exclusive deals on multiple destinations, and travel throughout the country in comfort",
-        image: "assets/images/slides/slide3.png",
+          'Have access to Cruise schedules, Airplane seasonal tickets, and Train itineraries from the palm of your hand',
+        image: 'assets/images/slides/3946557.png',
       },
     ];
   }
@@ -55,6 +48,20 @@ export class WalkthroughPage {
   }
 
   openLoginPage() {
-    this.navController.navigateForward("/public/login");
+    this.navController.navigateBack('/public/login');
+  }
+
+  async keepPassengerLoggedIn() {
+    const loader = await this.loadingController.create({
+      duration: 1000,
+    });
+
+    loader.present();
+    loader.onWillDismiss().then(() => {
+      if (!this.accountService.accessProfileInfo) {
+        this.navController.navigateRoot('/public/login');
+      }
+      this.navController.navigateForward('/navigation/flights/flights-search');
+    });
   }
 }

@@ -4,7 +4,7 @@ import { FormsModule } from "@angular/forms";
 import { Routes, RouterModule } from "@angular/router";
 
 import { IonicModule } from "@ionic/angular";
-import { HeaderMenuComponent } from "../../../components/header-menu/header-menu.component";
+import { HeaderMenuComponent } from "../../../components/menus/header-menu/header-menu.component";
 import { IncentivesPage } from "./incentives.page";
 
 const routes: Routes = [

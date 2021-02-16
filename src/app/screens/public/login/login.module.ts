@@ -18,6 +18,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
+  declarations: [DisplayErrorComponent, LoginPage],
   imports: [
     CommonModule,
     FormsModule,
@@ -25,7 +26,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes),
   ],
-  declarations: [DisplayErrorComponent, LoginPage],
   providers: [FacebookService],
 })
 export class LoginPageModule {}

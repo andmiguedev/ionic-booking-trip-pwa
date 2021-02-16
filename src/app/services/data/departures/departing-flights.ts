@@ -1,6 +1,7 @@
 export let DEPARTING = [
   {
     // flightId: "1a2cc0a6281981161b11d66f7c934be8",
+    id: 1,
     airline: "Delta Airlines",
     duration: "1h 46m",
     departureTime: "10:11 am",
@@ -16,6 +17,7 @@ export let DEPARTING = [
   },
   {
     // flightId: "8f24881fd37a5eb530d0bab6634a1820",
+    id: 2,
     airline: "Jet Blue",
     duration: "2h 43m",
     departureTime: "10:06 am",
@@ -31,6 +33,7 @@ export let DEPARTING = [
   },
   {
     // flightId: "18c2176e79e13f2918fd08ddc7c6a550",
+    id: 3,
     airline: "Southwest Airlines",
     duration: "3h 20m",
     departureTime: "10:15 am",
@@ -46,6 +49,7 @@ export let DEPARTING = [
   },
   {
     // flightId: "6e0115809e416cdc943ae60ed0310737",
+    id: 4,
     airline: "Spirit Airlines",
     duration: "3h 38m",
     departureTime: "9:39 am",
@@ -61,6 +65,7 @@ export let DEPARTING = [
   },
   {
     // flightId: "fdb111cf2b4439e238a2c03f7163f2c9",
+    id: 5,
     airline: "United Airlines",
     duration: "2h 56m",
     departureTime: "12:45 pm",

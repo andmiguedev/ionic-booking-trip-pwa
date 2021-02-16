@@ -111,7 +111,7 @@ export class LoginPage implements OnInit {
         .pipe(first())
         .subscribe({
           next: () => {
-            this.navController.navigateForward("/flights/flights-search");
+            this.navController.navigateForward("/profile/profile-info");
           },
         });
 

@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button color="secondary"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Profile Information</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="animated fadeIn">
+  <div
+    class="profile-bg"
+    [ngStyle]="{'background-image': 'url(' + profile.coverImg + ')'}"
+  ></div>
+  <div class="container">
+    <div class="profile-card ion-padding">
+      <img class="profile-img" [src]="profile.avatarImg" />
+      <ion-card class="bg-primary ion-no-margin">
+        <ion-card-content>
+          <h3 class="profile-name">
+            <ion-text color="light">{{ account.fullName }}</ion-text>
+          </h3>
+          <p>
+            <ion-text color="secondary"
+              ><strong>{{ account.email }}</strong>
+            </ion-text>
+          </p>
+          <p class="profile-bio">
+            <ion-text color="light">{{ profile.shortBio }}</ion-text>
+          </p>
+          <ion-button (click)="signOutAccount()" size="small" color="tertiary"
+            >Sign Out</ion-button
+          >
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+</ion-content>

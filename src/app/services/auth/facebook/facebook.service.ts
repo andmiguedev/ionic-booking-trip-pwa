@@ -1,17 +1,17 @@
-import { Injectable } from "@angular/core";
-import { Router, ActivatedRoute } from "@angular/router";
-import { HttpClient } from "@angular/common/http";
+import { Injectable } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
-import { BehaviorSubject, Observable, from, EMPTY, of } from "rxjs";
-import { map, concatMap } from "rxjs/operators";
+import { BehaviorSubject, Observable, from, EMPTY, of } from 'rxjs';
+import { map, concatMap } from 'rxjs/operators';
 
-import { environment } from "./../../../../environments/environment";
-import { Account } from "../../../models/interfaces/account.interface";
+import { environment } from './../../../../environments/environment';
+import { Account } from '../../../models/interfaces/account.interface';
 
-const baseUrl = `${environment.localApiUrl}/`;
+const baseUrl = `${environment.localAddressUrl}`;
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class FacebookService {
   private accountSubject: BehaviorSubject<Account>;
@@ -70,7 +70,7 @@ export class FacebookService {
       .pipe(concatMap((accessToken) => this.AuthenticateUser(accessToken)))
       .subscribe(() => {
         const returnUrl = this.route.snapshot.queryParams[
-          "/public/login/returnUrl" || "/public/login"
+          '/public/login/returnUrl' || '/public/login'
         ];
         this.router.navigateByUrl(returnUrl);
       });
@@ -78,6 +78,6 @@ export class FacebookService {
 
   logout() {
     this.accountSubject.next(null);
-    this.router.navigate(["/public/login"]);
+    this.router.navigate(['/public/login']);
   }
 }

@@ -16,8 +16,10 @@ import { StatusBar } from "@ionic-native/status-bar/ngx";
 import { AppComponent } from "./app.component";
 import { AppRoutingModule } from "./app-routing.module";
 
+import { SidedrawerMenuComponent } from "./components/menus/sidedrawer-menu/sidedrawer-menu.component";
+
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, SidedrawerMenuComponent],
   entryComponents: [],
   imports: [
     BrowserModule,

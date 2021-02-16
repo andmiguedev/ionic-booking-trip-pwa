@@ -1,42 +1,63 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { BehaviorSubject, Observable } from "rxjs";
-import { map } from "rxjs/operators";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
-import { Account } from "../../../models/interfaces/account.interface";
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
-@Injectable({ providedIn: "root" })
+import { environment } from '../../../../environments/environment';
+import { Account } from '../../../models/interfaces/account.interface';
+
+@Injectable({ providedIn: 'root' })
 export class AccountService {
   private userSubject: BehaviorSubject<Account>;
   public account: Observable<Account>;
 
-  constructor(private http: HttpClient) {
+  private isPassengerAuthenticated = false;
+
+  public get validPassengerStatus(): boolean {
+    return this.isPassengerAuthenticated;
+  }
+
+  constructor(private http: HttpClient, private router: Router) {
     this.userSubject = new BehaviorSubject<Account>(
-      JSON.parse(localStorage.getItem("account"))
+      JSON.parse(localStorage.getItem('account'))
     );
     this.account = this.userSubject.asObservable();
   }
 
   registerUser(account: Account) {
     return this.http.post(
-      "http://localhost:8100/public/register/authorize",
+      `${environment.localAddressUrl}/public/register/authorize`,
       account
     );
   }
 
   loginUser(email, password) {
     return this.http
-      .post<Account>("http://localhost:8100/public/login/authenticate", {
-        email,
-        password,
-      })
+      .post<Account>(
+        `${environment.localAddressUrl}/public/login/authenticate`,
+        {
+          email,
+          password,
+        }
+      )
       .pipe(
         map((account) => {
           // Store the logged in session
-          localStorage.setItem("passenger", JSON.stringify(account));
+          localStorage.setItem('passenger', JSON.stringify(account));
           this.userSubject.next(account);
+          this.isPassengerAuthenticated = true;
         })
       );
+  }
+
+  logoutUser() {
+    localStorage.removeItem('passenger');
+    this.userSubject.next(null);
+
+    this.isPassengerAuthenticated = false;
+    this.router.navigate(['/public/login']);
   }
 
   public get accessProfileInfo(): Account {

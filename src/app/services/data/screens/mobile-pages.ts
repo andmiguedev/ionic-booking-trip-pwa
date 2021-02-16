@@ -12,8 +12,8 @@ export let MOBILE = [
     icon: "mail",
   },
   {
-    title: "Booking List",
-    url: "/booking-list",
+    title: "My Bookings",
+    url: "/bookings/my-bookings",
     current: "forward",
     icon: "book",
   },

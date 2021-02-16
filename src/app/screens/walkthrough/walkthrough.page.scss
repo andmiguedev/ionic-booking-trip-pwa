@@ -2,8 +2,9 @@ ion-slides {
   height: 100%;
 }
 
-.portrait {
-  max-width: 135px !important;
+.slider-image {
+  max-width: 100%;
+  max-height: 500px;
   margin: 0 0 16px;
 }
 
