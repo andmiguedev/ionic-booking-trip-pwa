@@ -33,6 +33,32 @@ ion-item {
   --ion-item-background: transparent;
 }
 
+ion-datetime {
+  &.datetime-md,
+  &.datetime-ios {
+    padding: 0;
+  }
+}
+
+ion-searchbar {
+  padding: 0;
+  &.searchbar-ios {
+    background-color: transparent;
+    border: 0;
+    align-items: baseline;
+    .searchbar-search-icon {
+      top: 14px;
+    }
+    .searchbar-input {
+      height: 4rem;
+    }
+  }
+  .searchbar-input {
+    // color: color($colors, primary);
+    border-radius: 1rem;
+  }
+}
+
 // Backgrounds
 .bg-white {
   background-color: white;
