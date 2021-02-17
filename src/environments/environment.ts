@@ -6,6 +6,9 @@ export const environment = {
   production: false,
   localAddressUrl: 'https://localhost:8100',
   facebookAppId: '412291049986443',
+  googleAppId:
+    '101958078145-8c2nj6je9s4uu8nobps9fme3t3k84gtb.apps.googleusercontent.com',
+  microsoftAppId: '0611ccc3-9521-45b6-b432-039852002705',
 };
 
 /*

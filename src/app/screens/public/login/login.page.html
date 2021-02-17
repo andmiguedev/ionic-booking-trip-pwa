@@ -68,7 +68,6 @@
       <h6 class="ion-text-center text-media">
         <ion-text color="secondary">Or sign in with </ion-text>
       </h6>
-
       <ion-grid class="btn-group">
         <ion-row>
           <ion-col size="4">
@@ -84,22 +83,24 @@
           </ion-col>
           <ion-col size="4">
             <ion-button
-              shape="round"
-              expand="full"
-              fill="solid"
-              color="secondary"
-            >
-              <ion-icon slot="icon-only" name="logo-twitter"></ion-icon>
-            </ion-button>
-          </ion-col>
-          <ion-col size="4">
-            <ion-button
+              (click)="loginWithGoogle()"
               shape="round"
               expand="full"
               fill="solid"
               color="secondary"
             >
               <ion-icon slot="icon-only" name="logo-google"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col size="4">
+            <ion-button
+              (click)="loginWithOutlook()"
+              shape="round"
+              expand="full"
+              fill="solid"
+              color="secondary"
+            >
+              <ion-icon slot="icon-only" name="logo-microsoft"></ion-icon>
             </ion-button>
           </ion-col>
         </ion-row>

@@ -5,7 +5,6 @@ import { RouteReuseStrategy } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
 import { handleAuthHttpRequests } from './services/storage/account/auth.requests';
-import { initFacebookSDK } from './services/auth/facebook/initializeSDK';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { IonicStorageModule } from '@ionic/storage';
@@ -15,6 +14,19 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { environment } from '../environments/environment';
+
+import {
+  SocialLoginModule,
+  SocialAuthServiceConfig,
+} from 'angularx-social-login';
+
+import {
+  FacebookLoginProvider,
+  GoogleLoginProvider,
+  MicrosoftLoginProvider,
+} from 'angularx-social-login';
+
 import { SidedrawerMenuComponent } from './components/menus/sidedrawer-menu/sidedrawer-menu.component';
 
 @NgModule({
@@ -25,14 +37,36 @@ import { SidedrawerMenuComponent } from './components/menus/sidedrawer-menu/side
     IonicModule.forRoot(),
     IonicStorageModule.forRoot(),
     AppRoutingModule,
+    SocialLoginModule,
   ],
   declarations: [AppComponent, SidedrawerMenuComponent],
   providers: [
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider(`${environment.facebookAppId}`),
+          },
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(`${environment.googleAppId}`),
+          },
+          {
+            id: MicrosoftLoginProvider.PROVIDER_ID,
+            provider: new MicrosoftLoginProvider(
+              `${environment.microsoftAppId}`
+            ),
+          },
+        ],
+      } as SocialAuthServiceConfig,
+    },
     handleAuthHttpRequests,
-    initFacebookSDK,
   ],
   bootstrap: [AppComponent],
 })

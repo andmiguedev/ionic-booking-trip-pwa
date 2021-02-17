@@ -8,8 +8,6 @@ import { IonicModule } from '@ionic/angular';
 import { DisplayErrorComponent } from './../../../components/display-error/display-error';
 import { LoginPage } from './login.page';
 
-import { FacebookService } from './../../../services/auth/facebook/facebook.service';
-
 const routes: Routes = [
   {
     path: '',
@@ -26,6 +24,5 @@ const routes: Routes = [
     RouterModule.forChild(routes),
   ],
   declarations: [DisplayErrorComponent, LoginPage],
-  providers: [FacebookService],
 })
 export class LoginPageModule {}

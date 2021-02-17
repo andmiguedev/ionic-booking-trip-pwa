@@ -1,6 +1,6 @@
-import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { first } from "rxjs/operators";
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { first } from 'rxjs/operators';
 
 import {
   MenuController,
@@ -8,19 +8,28 @@ import {
   LoadingController,
   ToastController,
   NavController,
-} from "@ionic/angular";
+} from '@ionic/angular';
 
-import { ValidatorService } from "./../../../services/form/validator/validator.service";
-import { AccountService } from "../../../services/storage/account/account.service";
-import { FacebookService } from "./../../../services/auth/facebook/facebook.service";
+import { ValidatorService } from './../../../services/form/validator/validator.service';
+import { AccountService } from '../../../services/storage/account/account.service';
+
+import {
+  SocialAuthService,
+  FacebookLoginProvider,
+  MicrosoftLoginProvider,
+} from 'angularx-social-login';
+
+import { SocialUser, GoogleLoginProvider } from 'angularx-social-login';
 
 @Component({
-  selector: "app-login",
-  templateUrl: "./login.page.html",
-  styleUrls: ["./login.page.scss"],
+  selector: 'app-login',
+  templateUrl: './login.page.html',
+  styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
   public loginForm: FormGroup;
+  accountUser: SocialUser;
+  hasLoggedIn: boolean = null;
 
   constructor(
     private menuController: MenuController,
@@ -29,7 +38,7 @@ export class LoginPage implements OnInit {
     private toastController: ToastController,
     private formBuilder: FormBuilder,
     private accountService: AccountService,
-    private facebookService: FacebookService,
+    private socialAuthService: SocialAuthService,
     private navController: NavController
   ) {}
 
@@ -41,38 +50,45 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
     this.validateFormFields();
+
+    this.socialAuthService.authState.subscribe((passenger) => {
+      this.accountUser = passenger;
+      this.hasLoggedIn = passenger != null;
+    });
+
+    console.log(this.accountUser);
   }
 
-  validateFormFields() {
+  validateFormFields(): void {
     this.loginForm = this.formBuilder.group({
-      email: ["", [Validators.required, ValidatorService.validateEmail]],
-      password: ["", [Validators.required, ValidatorService.validatePassword]],
+      email: ['', [Validators.required, ValidatorService.validateEmail]],
+      password: ['', [Validators.required, ValidatorService.validatePassword]],
     });
   }
 
   async forgotCredentialsModal() {
     const alert = await this.alertController.create({
-      subHeader: "Forgot Password?",
+      subHeader: 'Forgot Password?',
       message:
-        "Enter email address you used to register, and we will send a link to reset your password",
+        'Enter email address you used to register, and we will send a link to reset your password',
       inputs: [
         {
-          name: "email",
-          type: "email",
-          placeholder: "customer@domain.com",
+          name: 'email',
+          type: 'email',
+          placeholder: 'customer@domain.com',
         },
       ],
       buttons: [
         {
-          text: "Cancel",
-          role: "cancel",
-          cssClass: "secondary",
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
           handler: () => {
-            console.log("User canceled request to reset a password");
+            console.log('User canceled request to reset a password');
           },
         },
         {
-          text: "Confirm",
+          text: 'Confirm',
           handler: async () => {
             const loader = await this.loadingController.create({
               duration: 2000,
@@ -81,9 +97,9 @@ export class LoginPage implements OnInit {
             loader.present();
             loader.onWillDismiss().then(async () => {
               const toast = await this.toastController.create({
-                message: "Check your email for recovery instructions",
+                message: 'Check your email for recovery instructions',
                 duration: 3000,
-                position: "bottom",
+                position: 'bottom',
               });
 
               toast.present();
@@ -111,7 +127,7 @@ export class LoginPage implements OnInit {
         .pipe(first())
         .subscribe({
           next: () => {
-            this.navController.navigateForward("/profile/profile-info");
+            this.navController.navigateForward('/profile/profile-info');
           },
         });
 
@@ -123,11 +139,19 @@ export class LoginPage implements OnInit {
     }
   }
 
-  loginWithFacebook() {
-    this.facebookService.login();
+  loginWithFacebook(): void {
+    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID);
   }
 
-  openRegisterPage() {
-    this.navController.navigateForward("/public/register");
+  loginWithGoogle(): void {
+    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
+  }
+
+  loginWithOutlook(): void {
+    this.socialAuthService.signIn(MicrosoftLoginProvider.PROVIDER_ID);
+  }
+
+  openRegisterPage(): void {
+    this.navController.navigateForward('/public/register');
   }
 }
